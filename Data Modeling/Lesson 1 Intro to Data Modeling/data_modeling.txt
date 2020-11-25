@@ -1,0 +1,201 @@
+-------------------- What is data modelling? --------------------
+
+An abstraction that organises elements of data and how they will relate to each other.
+Data modelling can easily translate to a database modelling, as this is essential to end state.
+
+Data modelling process:
+- Process to support business and user applications
+- Gather requirements
+- Conceptual data modelling
+- Logical data modelling
+- Physical data modelling
+Thinking about the concept data model always comes before logical and actual implementation of the data modelling.
+
+DDL (data definition language)
+
+
+
+-------------------- Why is data modelling important? --------------------
+
+Key points about Data Modeling
+
+- Data Organisation (CRITICAL): The organisation of the data for your applications is extremely important. e.g you dont want to have to join 4 tables just to get a customers email.. you could of just added it to the customer table.
+
+- Use Cases: Having a well thought out and organized data model is critrical to how data can later be used. Queries that could have been straightforward and simple might become complicated if data modeling isnt thought out.
+
+- Starting early: Thinking and planning ahead will help you be successful. This is not something you want to leave until the last minute.
+
+- Iterative Process: Data madeling is not a fixed process. It is iterative as new requirements and data are introduced. Having flexibility will helo as new info becomes available.
+
+Example of Why Data Modeling is Important:
+Let's take an example from Udacity. Here, a Udacity data engineer would help structure the data so it can be used by different people within Udacity for further analysis and also shared with the learner on the website. For instance, when we want to track the students' progress within a Nanodegree program, we want to aggregate data across students and projects within a Nanodegree. In a relational database, this requires the data to be structured in ways that each student's data is tracked across all Nanodegree programs that s/he has ever enrolled in. The data also needs to track the student's progress within each of those Nanodegree programs.
+
+The data model is critical for accurately representing each data object. For instance, a data table would track a student's progress on project submissions, i.e., whether they passed or failed a specific rubric requirement. Furthermore, the data model should ensure that a student's progress is updated and aggregated to provide an indicator of whether the student passed all the rubric requirements and successfully finished the project. Data modeling is critical to track all of these pieces of data so the tables are speaking to each other, updating the tables correctly (e.g., updating a student's progress on a project submission), and meeting defined rules (e.g. project completed when all rubric requirements are passed).
+
+
+
+
+
+
+
+
+
+
+ -------------------- Relational Databases --------------------
+
+Relational and non-relational databases do data modeling differently!
+
+- Organises data into one or more tables or relations of columns/rows with a unique key identifying each row. Generally, each table represents one 'entity type' (such as customer or product).
+
+- Database on the relational model of data, a software system used to manintain relational databases is a relational database management system (RDBMS).
+
+- SQL is the language used across almost all relational databases for querying and mainatining.
+
+--- Common types of relational databases (theres more, but these are a start)
+- Oracle
+- Teradata
+- MySql
+- PostgreSQL
+- Sqlite
+
+----- The basics -----
+- Databse/Schema = colection of tables
+- Tables/Relation = a group of rows sharing the same labeled elements (customers)
+- Columns/Attribute = labeled element  	    (name, email, city)
+- Rows/Tuple = a single item       	   (Amanda, jdoe@xyc.com, NYC)
+
+
+
+-------------------- When to use a relational database? --------------------
+
+--- Advantages of using a relational database
+- Flexibility for writing in SQL queries: With SQL being the most common database query language.
+- Modeling the data not modeling queries.
+- Ability to do JOINS.
+- Ability to do aggregations and analytics.
+- Secondary indexes avaliable: You have the advantage of being able to add another index to help with quick searching.
+- Smaller data volumes: If you have a smaller data volume (and not big data) you can use a relational database for its simplicity.
+- ACID transactions (data integrity: Allows you to meet a set of properties of database transactions intended to guarantee validity even in the event of errors, power failures, and thus maintain data integrity.
+- Easier to change business requirements.
+
+
+
+-------------------- ACID Transactions --------------------
+
+(A)tomicity (C)onsistency (I)solation (D)urability
+
+Properties of datase transactions intended to guarantee validity even in the event of power failures.
+
+- Atomicity - The whole transaction is processed or nothing is (all or nothing).
+
+- Consistency - Only trascations that abide by the constraints and rules is written into a database otherwise the database keeps previous state.
+
+- Isolation - Transactions are processed independently and securely, order does not matter.
+
+- Durability - Completed transactions are saved to database  even if they are cases of system failure.
+
+
+
+-------------------- When not to use Relational Database -------------------
+
+- Have large amounts of data: Relational databases are not distributes databses and because of this they can only scale vertically by adding more storage in the machine itself. You are limited by how much you can scale and how much data you can store on one machine. You cannot add more machines like you can NoSQL databses.
+
+- Need to be able to store different type formats: Relational databses are not designed to handle unstructured data.
+
+- Need high throughput -- fast reads: While ACID transactions bring benefits, they also slow down the process of reading and writing data. If you need very fasr reads and writes,. using a relational database may not be suitable.
+
+- Need high avaliability: The fact that relational databases are not distributed (and even when they are, they have a coordinator/worker architecture), they have a single point of failure. When that database goes down, a fail-over to a back up system occurs and takes time. 
+
+- Need horizontal scalability: Horizontal scalability is the ability to add more machines or nodes to a system to increase performance and space for data.
+
+
+
+-------------------- What is PostgreSQL -------------------
+
+- Open source  object-relational database system
+- Uses and builds on SQL language 
+
+
+
+
+
+
+
+
+
+
+-------------------- Non-Relational Databases --------------------
+
+-------------------- NoSQL Databses -------------------
+
+- Simpler design, simpler horizontal scaling and finer control of availability. Data structures used are different than those in Relational Database and they makse some operations faster.
+
+- NoSQL = Not Only SQL; NoSQL and NonRelational are interchangeable terms
+
+- There are various types of NoSQL databses
+
+----- Common types of NoSQL databses
+- Apache Cassandra (partition row store)
+- Mongo DB (document store)
+- Dynamo DB (key-value store)
+- Apache HBase (wide column store)
+- Neo4J (graph database)
+
+
+
+-------------------- Apache Cassandra -------------------
+
+----- Basics of Cassandra -----
+- Keyspace = Collection of tables (database)
+- Table = A group of partitions
+- Rows = A single item
+-Partition = fundimental unit of access, collection of row(s), how data is distributed
+- Primary Key = Primary key is made up of a partition key and clustering columns
+- Columns = Clustering and data, labeled element
+
+
+----- What is Cassandra -----
+- Provides scalabiity and high availability without compromising performance.
+
+- Linear Scalability and proven fault-tolerance on commodity hardware or cloud infrastructure make it perfect for mission critical data
+
+- Apache Cassandra uses its own language CQL (Cassandra Query Language)
+
+
+----- Good use cases for NoSQL are:
+- Transaction logging (retail, health care)
+- Internet of Things
+- Time series data
+- Any workload that is heavy on writes to the database (Cassandra is optimized for writes)
+
+
+----- When to use NoSQL database -----
+- Large amounts of data 
+- Horizontal scalability
+- High availability 
+- High throughput - fast reads
+- Able to scale quickly
+- Flexible schema
+- Need to be able to store different data type formats
+- Users are distributed - low latency
+
+
+----- When NOT to use NoSQL database -----
+- Need ACID Transactions
+- Need the ability to do JOINS
+- Ability to do aggregations and analytics
+- Have changing business requirements
+- Queries are not available and need to have flexibility
+- Have a small dataset
+
+
+
+
+
+
+
+
+
+
+
+
