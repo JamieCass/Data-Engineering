@@ -1,0 +1,73 @@
+----- DATA ENGINEERING NOTES -----
+
+HELPFUL TIPS
+
+- Take notes
+- Write all the code yourself
+- Manage your time well
+- Don’t be afraid to change your schedule
+- Remember.. This course is going to be HARD.
+- Everyone struggles, but you need to just keep going! EVERY DAY!
+- Commitment and persistence will define whether or not I will pass!
+- Everyone will get stuck..
+- Don’t panic
+- Don’t quit
+- Be patient and work through the problem.
+- Udacity mentors and student spree there to help!
+
+
+BLOCKERS (brain block)
+2 main ways to get around it!
+
+- Use the community for help from students that have got stuck on the same thing.
+- Being able to google well!!!
+
+
+ASKING QUESTIONS
+
+- Ask specific questions: if you have more than one, use bullet points and make sure they are organised
+
+- Provide details and links: explain what you’ve already attempted to solve the problem, include the info such as the lesson or quiz, screenshots or classroom links.
+
+- Start with a clear question title: try and summarise the question in one sentence.
+
+- Share code correctly: Use the ‘Code Block’ option to properly format your code, if the question is from an external piece of code, include the link.
+
+- Figure out errors: if the question is about an error message, include the whole error message by either formatting the message using ‘Code Block’ or creating a Gist or a Paste on Pastebin and including a link to the description.
+
+- Avoid screenshots of code or error message: screenshot text can’t be copied to debug and they can be hard to read.
+
+- If the answer is helpful select it as the ‘accepted answer’
+
+
+What is data engineering?
+
+Data engineering comprises all engineering and operational task required to make data available for the end-user, whether its for analytics, model building, app development, etc…
+(take raw data, doing work to it, deliver a clean dataset or database for whoever is going to use it)
+
+Primarily focuses on designing efficient way of storing data, managing pipeline to move data from one place to the next and  cleaning/preparing data for the end-user.
+
+Data storage and processing.
+
+
+Common Data Engineering Activities:
+- Ingest data from a data source
+- Build and maintain a data warehouse
+- Create a data pipeline
+- Create an analytics table for specific use case
+- Migrate data to the cloud
+- Schedule and automate pipelines
+- Backfill data
+- Debug data quality issues
+- Optimise queries
+- Design a database
+
+
+Advise for new data engineers…
+Learn to use tools like:
+- Airflow
+- Redshift
+- Spark
+- Presto
+Don’t try and learn them all at the start, but still try and learn as much as you can.
+Try and jump in on projects that may not be in your skill set. Anything that can help you learn.
