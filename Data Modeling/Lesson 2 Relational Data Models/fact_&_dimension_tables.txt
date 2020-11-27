@@ -1,0 +1,75 @@
+-------------------- Fact and Dimension Tables --------------------
+
+- Fact and Dimension tables are similar to ERD (entity relationship diagrams) chack the image in the folder 
+
+- Work together to create an organized data model.
+
+- While fact and dimension are not created differently in the DDL, the are conceptual and extremely important for organization
+
+- Fact table citation: https://en.wikipedia.org/wiki/Dimension_(data_warehouse)
+
+- Dimension table citation: https://en.wikipedia.org/wiki/Fact_table
+
+- Fact and Dimension tables are similar to ERD (entity relationship diagrams)
+
+----- Fact Tables -----
+- Consists of the measurements, metrics or facts of a business process
+
+----- Dimension Tables -----
+- Structure that categorizes facts and measures in order to enable users to answer business questions. Dimensions are people, products, place and time.
+
+
+
+-------------------- Implementing Different Schemas --------------------
+
+- Two of the most popular (because of their simplicity) data mart schea for data warehouses are:
+1. Start Schema
+2. Snowflake Schema
+
+
+
+-------------------- Star Schema --------------------
+
+Star Schema is the simplest style of data mark schemas. It consists of one or more fact tables referencing any number of dimension tables
+
+----- Why 'star' schema ----- 
+(Image in this folder will explain)
+- Gets its name from the physical model resembling a star shape.
+- A fact table in the center.
+- Dimension tables surround the fact tables representing stars points.
+
+----- Benifits -----
+- Denormalized 
+- Simplifies queries
+- Fast aggregations
+
+----- Drawbacks -----
+- Issues that come with denormalization
+- Data integrity
+- Decrease query flexibility
+- Many to many relationships 
+
+
+
+-------------------- Snowlfake Schema --------------------
+
+Logical arrangement of tables in a multidimensional database represented by centralized fact tables whoch are connected to multiple dimensions.
+
+(look at the image in the folder (snowflake(ERD)))
+
+----- Snowflake vs Star ----- 
+- Star schema is a special, simplified case of snowflake schema.
+- Star schema does not allow for one to many relationships while snowflake does.
+- Snowflake is more normalized than star but only in 1NF or 2NF.
+
+
+
+
+
+
+
+
+
+
+
+

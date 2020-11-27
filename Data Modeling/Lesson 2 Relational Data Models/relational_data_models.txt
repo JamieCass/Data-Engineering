@@ -1,0 +1,136 @@
+-------------------- LEARNING OBJECTIVE --------------------
+Learn the fundimentals of how to do realtional data modelling by focusing on
+normalization, denormalization, fact/dimension tables and different schema models.
+
+IMPORTANT... HAVE A GOOD UNDERSTANDING OF NORMALIZATION AND DENOMRALIZATION
+
+
+
+-------------------- DATABASE --------------------
+- Definition: A set of related data and the way it is organised.
+
+- Consists of computer software that allows users to interact with the database and provides all access to all of the data
+
+
+
+-------------------- Imporance of Relational Datases --------------------
+
+- Rule 1: All info in a relational database is represented explicitly at the logical level and in exactly one way - by values in tables
+
+- Standarization of data model
+
+- Flexibility in adding and altering tables
+
+- Data integrity
+
+- SQL
+
+- Simplicity
+
+- Intuitive Organisation
+
+
+
+-------------------- OLAP vs OLTP --------------------
+
+- Online Analytical Processing (OLAP): Allows for complex analytical and ad hoc quieries. Optimized for reads.
+
+- Online Transactional Processing (OLTP): Allows for less complex queries in large volume. Types of queries for these databases are read, insert, update and delete.
+
+
+
+-------------------- Structuring the Database --------------------
+
+- Normalization: To reduce data redundcancy (copies of the data) and increase data integrity (make sure the answer you get from the database is correct).
+
+- Denormalization: Must be done in read heavy workloads to increase performance.
+
+
+
+-------------------- Normal Form (Normalization) --------------------
+Objectives of Normal From
+
+- To free the database from unwanted insertions, updates & deletion dependencies.
+
+- To reduce the need for refactoring the database as new types of data are introduced.
+
+- Make the relational model more informative to users.
+
+- Make the database neutral to the query statistics.
+
+----- 3 steps of normalization -----
+The process of normalization is a step by step process:
+
+1. How to reach First Normal Form (1NF):
+- Atomic values: each cell contains unique and single values
+- Be able to add data wihtout altering tables
+- Seperate different relations into different tables
+- Keep relations between tables together with Foreign Keys
+
+2. Second Normal Form (2NF):
+- Have reached 1NF
+- All columns in table must rely on Primary Key
+
+3. Third Normal Form (3NF):
+- Must be in 2NF 
+- No transitive dependencies
+- Remember, transitive dependencies you are trying to maintain is that to get from A->C, you want to avoud going through B.
+
+When to use 3NF:
+- When you want to update data, we want to be able to do in just 1 place. Want to avoid updating table after table.
+
+
+
+-------------------- Denormalization --------------------
+
+- Joins on a databse allow for outstanding flexibility but are extremely slow. If dealing with heavy reads, you may want to think about denormalizing the tables. You get the data into normalized form, then proceed with denormalization (so it comes after normalization).
+
+- Improving read perfomance at expense of losing some write performance by adding redundant copies of data.
+
+- Usually requires more space.
+
+- Duplicate data is fine in denormalized data. (have 2 seperate tables with 2 columns the same etc...)
+
+- !!!! REMEMBER !!!!  Denormalized tables will have duplicate data, so if youre changing it in one place you have to make sure youre changing it in the other as well!! 
+
+----- Logical Design Change ----- 
+
+1. The designer is incharge of keeping data consistent
+
+2. Reads will be faster (select)
+
+3. Writes will be slower (insert, update, delete)
+
+
+
+-------------------- Normalized vs Denormalized --------------------
+
+----- Normalized -----
+- Is about tring to increase data integrity by reducing the number of duplicates. Data that needs to be added or updated can be done in as few places as possible.
+
+- You will usually create a lot of seperate tables with specific information, which you can later JOIN together to get the full info.
+
+e.g.
+song_table (song_id, album_id, song_name)
+album_table (album_id, album_name, artist_id, year)
+artist table (artist_id, artist_name)
+
+----- Denormalized -----
+- Is about trying to increase performance by reducing the number of joins between tables. Data integrity will take a bit of a potential hit as there will be more copies of data (to reduce JOINS).
+
+- You will usually have 1 or 2 tables with duplicate info but they will be a lot quicker.
+
+e.g.
+album_table (album_id, album_name, atrist_name, year, list_of_songs)
+
+
+
+-------------------- Fact & Dimension Tables --------------------
+
+
+
+
+
+
+
+

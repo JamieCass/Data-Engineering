@@ -1,0 +1,135 @@
+-------------------- Data Definition and Constraints --------------------
+The CREATE statement in SQL had a few important contraints that are highlighted below. 
+
+-------------------- NOT NULL --------------------
+
+- NOT NULL constraint indicates that the column cannot contain a null value.
+
+e.g.
+CREATE TABLE IF NOT EXISTS customer_transactions (
+    customer_id int NOT NULL, 
+    store_id int, 
+    spent numeric
+);
+
+
+
+- You can add NOT NULL to more than one column, usually this occurs when you have a composite key. 
+
+
+e.g.
+CREATE TABLE IF NOT EXISTS customer_transactions (
+    customer_id int NOT NULL, 
+    store_id int NOT NULL, 
+    spent numeric
+);
+
+
+-------------------- UNIQUE --------------------
+
+- UNIQUE constraint is used to specify that the data across all rows in one column is unique within the table. 
+
+- Can also be used for multiple columns, so that the combination of values across thos columns will be unique within the table.
+
+e.g.
+CREATE TABLE IF NOT EXISTS customer_transactions (
+    customer_id int NOT NULL UNIQUE, 
+    store_id int NOT NULL UNIQUE, 
+    spent numeric 
+);
+
+
+
+- Another way is to add a table constraint using commas to seperate the columns 
+
+
+e.g.
+CREATE TABLE IF NOT EXISTS customer_transactions (
+    customer_id int NOT NULL, 
+    store_id int NOT NULL, 
+    spent numeric,
+    UNIQUE (customer_id, store_id, spent)
+);
+
+
+-------------------- PRIMARY KEY --------------------
+
+- PRIMARY KEY constraint is defined on a single column, and every table should contain a primary key. 
+
+- Values in this column uniquely indentify the rows in the table
+
+- if a grouo of columns are defined as primary key, they are called a composite key (means the combination of the columns will uniquely identify the rows in the table)
+
+- By default, the PRIMARY KEY constraint ahd the UNIQUE and NO NULL built into it.
+
+
+e.g.
+CREATE TABLE IF NOT EXISTS customer_transactions (
+    customer_id int, 
+    store_id int, 
+    spent numeric,
+    PRIMARY KEY (customer_id, store_id)
+);
+
+
+-------------------- UPSERT --------------------
+
+https://www.postgresqltutorial.com/postgresql-upsert/
+
+- In RDBMS he term 'upsert' refers to the idea of inserting a new row in an existing table, or updating the row if it already exists in the table.
+
+
+-------------------- INSERT --------------------
+
+https://www.postgresql.org/docs/9.5/sql-insert.html
+
+- This statement add in new rows in the table, values associated with specific target columns can be added in any order.
+
+e.g.(creating a table to insert into)
+CREATE TABLE IF NOT EXISTS customer_address (
+    customer_id int PRIMARY KEY, 
+    customer_street varchar NOT NULL,
+    customer_city text NOT NULL,
+    customer_state text NOT NULL
+);
+
+
+
+e.g.(inserting an address into the table)
+INSERT into customer_address (
+VALUES
+    (432, '758 Main Street', 'Chicago', 'IL'
+);
+
+
+
+- Let say we need to update the customer address but didnt want to add a new customer id. (if there is any conflict on cutsomer_id, we dont want that to change)
+
+- Good candidate for using ON CONFLICT DO NOTHING 
+
+e.g. 
+INSERT INTO customer_address (customer_id, customer_street, customer_city, customer_state)
+VALUES
+ (
+ 432, '923 Knox Street', 'Albany', 'NY'
+ ) 
+ON CONFLICT (customer_id) 
+DO NOTHING;
+
+
+
+- Now imagine you want to add more details in the existing address for an existing customer
+
+- Good candidate for ON CONFLICT DO UPDATE
+
+e.g.
+INSERT INTO customer_address (customer_id, customer_street)
+VALUES
+    (
+    432, '923 Knox Street, Suite 1' 
+) 
+ON CONFLICT (customer_id) 
+DO UPDATE
+    SET customer_street  = EXCLUDED.customer_street;
+
+
