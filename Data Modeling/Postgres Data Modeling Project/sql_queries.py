@@ -46,7 +46,8 @@ song_table_insert = ("""INSERT INTO songs (song_id, title, artist_id, year, dura
 VALUES(%s, %s, %s, %s, %s)
 """)
 
-artist_table_insert = ("""
+artist_table_insert = ("""INSERT INTO artists (artist_id, name, location, latitude, longitude)
+VALUES(%s, %s, %s, %s, %s)
 """)
 
 
