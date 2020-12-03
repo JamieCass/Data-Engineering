@@ -51,13 +51,14 @@ VALUES(%s, %s, %s, %s, %s)
 """)
 
 
-time_table_insert = ("""
+time_table_insert = ("""INSERT INTO time (start_time, hour, day, week, month, year, weeday)
+VALUES(%s, %s, %s, %s, %s, %s, %s)
 """)
-
 # FIND SONGS
 
 song_select = ("""
 """)
+
 
 # QUERY LISTS
 
