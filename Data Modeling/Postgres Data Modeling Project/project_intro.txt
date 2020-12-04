@@ -16,7 +16,7 @@ In this project, you'll apply what you've learned on data modeling with Postgres
 
 ----- Fact table: -----
 
-1. songplays - records in log data associated with song plays i.e. records with page 'NextSong' (songplay_id start_time, user_id, level, song_id, artist_id, session_id, location, user_agent)
+1. songplays - records in log data associated with song plays i.e. records with page 'NextSong' (songplay_id, start_time, user_id, level, song_id, artist_id, session_id, location, user_agent)
 
 
 ----- Dimension tables: -----
@@ -65,13 +65,13 @@ In this project, you'll apply what you've learned on data modeling with Postgres
 
 ----- Build ETL Processes -----
 
-Follow instructions in the etl.ipynb to devel ETL processes for each table. At the end of each table section or at the end of the notebook, run test.ipynb to confirm that records were successfully inserted into each table. Remember to rerun create_tables.py tp reset your tables before each time you run this notebook.
+Follow instructions in the etl.ipynb to develop ETL processes for each table. At the end of each table section or at the end of the notebook, run test.ipynb to confirm that records were successfully inserted into each table. Remember to rerun create_tables.py tp reset your tables before each time you run this notebook.
 
 
 
 ----- Build ETL Pipeline -----
 
-Use what you've completed in etl.ipynb to complete etl.py, where you'll process the entire datasets. Remember to rerin create_tables.py before running etl.py to reset your tables. Run test.ipynb to confirm your records were successfully inserted into each table.
+Use what you've completed in etl.ipynb to complete etl.py, where you'll process the entire datasets. Remember to rerun create_tables.py before running etl.py to reset your tables. Run test.ipynb to confirm your records were successfully inserted into each table.
 
 
 
