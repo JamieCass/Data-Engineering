@@ -1,0 +1,116 @@
+-------------------- LEARNING OBJECTIVE --------------------
+Learn the fundamentals of data modelling for NoSQL databases, focusing on the basics of NoSQL database design, denormalization, primary keys, clustering columns and the WHERE clause.
+
+NoSQL - Not only SQL
+
+Non-relational database
+
+NoSQL and non-relational are interchangeable terms.
+
+
+
+-------------------- WHEN TO USE NoSQL --------------------
+
+- Need high availibility in the data: Indicates the system is always up and there is no downtime.
+
+- Have large amounts of data.
+
+- Need linear scalability: The need to add more nodes to the system so performance will increase linearly.
+
+- Low latency: Shorter delay before the data is transferred once the instruction for the transfer has been recieved.
+
+- Need fast reads and write.
+
+- Using Apache Cassandra -- a NoSQL databse
+
+
+
+-------------------- APACHE CASSANDRA --------------------
+
+- Open source NoSQL DB
+
+- Masterless Architecture
+
+- High Availibility
+
+- Linear Scalable
+
+- Used by Uber, Netflix, Hulu, Facebook, etc..
+
+- Major contributors to the project: DataStax, Facebook, Twitter, Apple.
+
+
+
+-------------------- DISTRIBULATED DATABASES --------------------
+In a distributed database, in order to have high availibility, you will need copies of your data.
+
+----- Eventual consistency -----
+Over time (if no changes are made) each copy of the data will be the same, but if there are new changes, the data may be different in defferent locations. The data may be inconsisent for only milliseconds. There ae workarounds in place to revent getting stale data.
+
+----- Useful links on cassandra data architecture -----
+https://docs.datastax.com/en/archived/cassandra/3.0/cassandra/architecture/archTOC.html
+https://www.tutorialspoint.com/cassandra/cassandra_architecture.htm
+
+
+
+-------------------- CAP THEOREM --------------------
+'C'onsistency 'A'vailibility 'P'artition tolerence
+
+A theorem in computer science that states it is impossible for a distributed data store to simultaneously provide more than two out of the following three guarantees of consistency, availibility and partition tolerence.
+
+- Consistency: Every read from the database gets the latest (and correct) piece of data or an error.
+
+- Availibility: Every request is recieved and a response is given -- without a guarantee that the data is the latest update.
+
+- Partition Tolerence: The system continues to work regardless of losing network connectivity between nodes.
+
+
+
+
+-------------------- DENORMALIZATION IN CASSANDRA --------------------
+----- Data modelling in Apache Cassandra -----
+- Denormalization is not just ok -- its a must!
+- Denmormalization must be done for fast reads
+- Cassandra has been optimized for fast writes
+- !!!!! ALWAYS think queries first !!!!!
+- One table per query is a great strategy
+- Cassandra does not allow for JOINs between tables
+
+Think... Two queries Two tables!!
+
+
+
+-------------------- CQL --------------------
+Cassandra Query Language is the way to interact with the database and is very similar to SQL. JOINS, GROUPY BY, or subqueries are not in CQL and are not supported by CQL.
+
+
+
+-------------------- PRIMARY KEY --------------------
+- The PRIMARY KEY os how each row can be uniquely identified and how the data is distributed across the nodes (or servers) in our system.
+
+- The first element of the PRIMARY KEY is the PARTITION KEY (which will determine the distribution).
+
+- The PRIMARY KEY is made up of either just the PARTITION KEY or with the addition of CLUSTERING COLUMNS. The PARTITION KEY will determine the distribution of data across the system.
+
+- The partition key's row value will be hashed (turned into a number) and stored on the node in the system that holds that range of values.
+
+----- Key Points -----
+- Must be unique
+
+- Hashing of this value results in the placement on a particular node in the system.
+
+- The PRIMARY KEY is made up of either just the PARTITION KEY or may also include additional CLUSTERING COLUMNS
+
+- A 'Simple' PRIMARY KEY is just one column that is also the PARTITION KEY. A 'Composite' PRIMARY KEY is made up of more than one column and will assist in creating a unique value in your retrieval queries.
+
+- The PARTITION KEY will determine the distribution of data across the system.
+
+
+
+
+
+
+
+
+
+
