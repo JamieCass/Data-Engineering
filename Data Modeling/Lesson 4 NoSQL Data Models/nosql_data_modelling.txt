@@ -107,8 +107,70 @@ Cassandra Query Language is the way to interact with the database and is very si
 
 
 
+-------------------- CLUSTERING COLUMNS --------------------
+The PRIMARY KEY is made up of either just the PARTITION KEY or with the addition of CLUSTERING COLUMNS. The CLUSTERING COLUMN will determine the sort order within a partition.
+
+A clustering column isnt required in the primary key. It can be used for ordering the data on the table, but its not required!
+
+- The clustering column with sort the data in sorted ascending order, e.g. alphabetical order.
+
+- More than one clustering column can be added (or none!)
+
+- From thre the clustering columns will sort in order of how they were added to the primary key.
+
+E.G. PRIMARY KEY ((year), artist_name, album_name)
+If you wanted to show albums but you had some from the same year and artists you would use the PRIMARY KEY above. That will sort the 'year' frist, then the 'artist_name' and finally the 'album_name'.
+
+YEAR 	  ARTIST_NAME 	  ALBUM_NAME
+1965 	| Elvis 		| Blue hawaii
+1965 	| The Beatles	| Rubber Soul
+1965 	| The Beatles 	| Showing Order
+1965 	| The Monkees 	| Meet the Monkees
+
+You can see how it has been ordered with the year all being the same, but then artist name is ascedning alphabetically, then with the same artist the album name is ordered alphabetically.
 
 
+
+-------------------- WHERE CLAUSE --------------------
+- Data modelling in Cassandra is query focused and that focus needs to be on the WHERE clause.
+
+- The PARTITION KEY must be included in your query and any CLUSTERING COLUMNS can be used in the order they appear in your PRIMARY KEY.
+
+- Failure to include a WHERE clause will result in an error.
+
+- Avoid using 'ALLOW FILTERING'!!!
+
+
+
+-------------------- LESSON WRAP UP --------------------
+- Basics of Distributed Database Design
+
+- Must know your queries and model the tables to your queries
+
+- Importance of Denormalization
+
+- Apache Cassandra is a popular NoSQL database
+
+- CQL and some key differences with SQL
+
+- Primary Key, Partition Key and Clustering Column
+
+- The WHERE clause
+
+
+
+-------------------- COURSE WRAP UP --------------------
+- Relational vs Non-Relational databases
+
+- Fundamentals of Relational database data modelling
+
+- Normalization
+
+- De-normalization
+
+- Fundamentals of NoSQL data modelling
+
+- Basics of distributed database design
 
 
 
