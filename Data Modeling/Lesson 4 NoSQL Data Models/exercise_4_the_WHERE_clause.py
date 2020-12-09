@@ -58,7 +58,7 @@ except Exception as e:
     print(e)
 
 try:
-    session.execute(query, (1966, "The Monkees", "The Monkees", "Los Angeles"))
+    session.execute(query, (1966, "The Monkees", "The Monkees", "Los Angeles")) 
 except Exception as e:
     print(e)
 
@@ -109,7 +109,6 @@ for row in rows:
 
 session.shutdown()
 cluster.shutdown()
-
 
 
 
