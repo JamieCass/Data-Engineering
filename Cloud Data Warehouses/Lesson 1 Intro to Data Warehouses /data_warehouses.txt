@@ -1,4 +1,155 @@
--------------------- DATA WAREHOUSES  (BUSINESS PERSPECTIVE --------------------
+-------------------- DATA WAREHOUSES  (BUSINESS PERSPECTIVE) --------------------
+
+A data warehouse is designed to optimize data analysis and gathers data from multiple sources.
+
+
+E.G. 
+You are in charge of a retialers infastructure. This is what you have to look at!!!...
+----- Business Activities -----
+
+- Customers: should be able to find goods and make orders
+
+- Inventory Staff: should be able to stock, retrieve and re-order goods
+
+- Delivery Staff: should be able to pick up & deliver goods
+
+- HR: should be able to assess the performance of sales channels
+
+- Marketing: should be able to see the effect of different sales channels
+
+- Management: should be able to monitor sales growth
+
+ASK YOURSELF: 
+Can i build a database to support these activities? 
+Are all of the above questions of the same nature?
+
+
+----- Details that may affect your data infastructure -----
+
+- Retailer has a nation-wide presence -> 'Scale?'
+
+- Retailer has aquired smaller retailers, brick & mortar shops, online store -> 'Single database? Complexity?'
+
+- Has support call center & socail media accounts -> 'Tabular data?'
+
+- Customers, Inventory Staff and Delivery Staff expect the system to be fast & stable -> 'Performance'
+
+- HR, Marketing & Sales Reports want a lot of information but have not decided yet on everything they need -> 'Clear Requirements?'
+
+MAYBE A SINGLE REATIONAL DATABASE WONT SUFFICE!!!! 
+
+
+
+-------------------- OPERATIONAL VS ANALYTICAL PROCESSES --------------------
+
+----- Operational Processes (make it work!) ----- 
+
+- Find goods & make orders (customers)
+
+- Stock and find goods (inverntory staff)
+
+- Pick up and deliver goods (delivery staff)
+
+
+----- Analytical Processes (whats going on?) ----- 
+
+- Assess the performance or sales staff (HR)
+
+- See the effect of differnt sales channelks (marketing)
+
+- Monitor sales growth (management)
+
+
+----- Opertational Databases -----
+GOOD...
+- Excellent for operations
+
+- No redudency , high integrity
+
+BAD...
+-- Too slow for analytics, too many joins
+
+-- Too hard to undertsand
+
+
+----- Solution -----
+
+Create 2 processing models, Create a system for them to co-exist
+
+OLTP: Online Transactional Processing
+
+OLAP: Online Analytical Processing
+
+Data Warehouse: A system (including processes, technologies & data representations) that enable us to support analytical processes
+
+
+
+-------------------- DATA WAREHOUSES  (TECHNICAL PERSPECTIVE) --------------------
+
+DWH Definition 1
+A data warehouse is a copy of tramsaction data specifically structured for query and analysis.
+
+DWH Definition 2
+A data warehouse is a subject-oriented, integrted, nonvolitile and time-variant collection of data in support of managements descisions.
+
+DWH Definition 3
+A data warehouse is a system that retrieve and consolidates data periodically from the source systems into a dimensional or normalized data store. It usually keeps years of history and is queried for business intelligence or other analytical activities. It is tyoically uodatedd in batches, not every time a transaction happens in the source system.
+
+----- Data warehouse goals -----
+
+- Simple to understand
+
+- Performant
+
+- Quality assured
+
+- Handles new questions well
+
+- Secure
+
+
+
+-------------------- DIMENSIONAL MODELING --------------------
+
+STAR SCHEMA (joins with dimensions only, good for OLAP not OLTP)
+
+3NF SCHEMA (lots of expensive joins, hard to explain to business users)
+
+----- Fact Tables ----- (Usually NUMERIC & ADDITIVE)
+
+- Record business events like an order, a phone call, a book review.
+
+- Fact tables columns record events recorded in quantifiable metrics like quantity of an item, duration of a call or a book rating.
+
+
+--- EXAMPLES FACTS ---
+
+- A comment on an article represents an event but we can not easily make a statistic out of its content per se (NOT a GOOD fact)
+
+- Invoice number is numerical but adding it does not make sense (NOT a GOOD fact)
+
+- Total amount of an invoice could be added to complete total sales (GOOD fact)
+
+
+
+----- Dimension Tables ----- (Usually PHYSICAL (staff/customers/store/ etc..))
+
+- Record the context of the business events, e.g. who, what, where, why etc..
+
+- Dimension tables columns contain attributes like the store at which an item is purchased or the customer who made the call etc..
+
+
+--- EXAMPLE DIMENSIONS ---
+
+- Date & time are always a dimension
+
+- Physical locations and their attributes are GOOD candidates for dimensions
+
+- Human roles like customers and staff are always GOOD candidates for dimensions
+
+- Goods sold are always GOOD candudates for dimensions
+
+
 
 
 
