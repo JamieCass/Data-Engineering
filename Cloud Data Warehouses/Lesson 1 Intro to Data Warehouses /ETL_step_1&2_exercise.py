@@ -58,7 +58,7 @@ select min(payment_date) as start, max(payment_date) as end from payment;
 # TODO: Write a query that displays the number of addresses by district in the address table. 
 # Limit the table to the top 10 districts.
 %%sql
-SELECT district, count(address) as n
+SELECT district, sum(city_id) AS n
 FROM address
 GROUP BY 1
 ORDER BY n DESC

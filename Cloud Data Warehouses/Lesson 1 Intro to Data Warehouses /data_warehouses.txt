@@ -5,6 +5,7 @@ A data warehouse is designed to optimize data analysis and gathers data from mul
 
 E.G. 
 You are in charge of a retialers infastructure. This is what you have to look at!!!...
+
 ----- Business Activities -----
 
 - Customers: should be able to find goods and make orders
@@ -95,6 +96,7 @@ A data warehouse is a subject-oriented, integrted, nonvolitile and time-variant 
 DWH Definition 3
 A data warehouse is a system that retrieve and consolidates data periodically from the source systems into a dimensional or normalized data store. It usually keeps years of history and is queried for business intelligence or other analytical activities. It is tyoically uodatedd in batches, not every time a transaction happens in the source system.
 
+
 ----- Data warehouse goals -----
 
 - Simple to understand
@@ -131,7 +133,6 @@ STAR SCHEMA (joins with dimensions only, good for OLAP not OLTP)
 - Total amount of an invoice could be added to complete total sales (GOOD fact)
 
 
-
 ----- Dimension Tables ----- (Usually PHYSICAL (staff/customers/store/ etc..))
 
 - Record the context of the business events, e.g. who, what, where, why etc..
@@ -151,6 +152,7 @@ STAR SCHEMA (joins with dimensions only, good for OLAP not OLTP)
 
 
 
+-------------------- DWH ARCHITECTURE --------------------
 
 
 
