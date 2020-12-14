@@ -1,0 +1,12 @@
+-------------------- OLAP CUBES --------------------
+- An OLAP cube is an aggregation of a fact metric on a number of dimensions
+- E.g. Movie, Branch, Month
+- Easy to communicate to business users
+- Common OLAP operations include: Roll-up, drill-down, slice & dice
+
+
+
+-------------------- Roll-up & Drill-down --------------------
+- Roll-up: Sum up the sales of each city: e.g. US, France (less columns in branch dimensions)
+
+

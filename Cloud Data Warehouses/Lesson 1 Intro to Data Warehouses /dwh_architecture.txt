@@ -1,0 +1,107 @@
+-------------------- DWH ARCHITECTURE --------------------
+- Kimballs Bus Architecture
+- Independant Data Marts
+- Inmons Coporate Information Factory (CIF)
+- Hybrid Bus & CIF
+
+
+
+-------------------- Kimballs Bus --------------------
+Back Room (Perparing)
+---------------------
+ETL Systems:
+- Transform from source to target
+- Conform dimensions
+- No user query support
+
+Front Room (End user)
+---------------------
+Presentation Area:
+- Dimensional
+- Atomic & summary data
+- Organized by business process
+- Usses conformed dimensions
+
+Design Goals:
+- Ease of use
+- Query performance
+
+Applications:
+- Ad hoc queries
+- Standard reports
+- Analytic apps
+
+Kimball's Bus Architecture, data is kept in a common dimension data model shared across different departments. It does not allow for individual department specific data modeling requirements.
+
+
+
+-------------------- Independant Data Marts --------------------
+Back Room (Preparing)
+---------------------
+ETL Systems:
+- Each department alone has its own seperate ETL process
+
+Front Room (End user)
+---------------------
+- Department 1 Data mart 
+- Department 2 Data mart
+- Department 3 Data mart
+
+- Department 1 application
+- Department 2 application
+- Department 3 application
+
+• Departments have independant ETL processes & dimenson models
+• These seperate& smaller dimensional models are called 'Data Marts'
+• Different fact tables for the same events, no conformed dimensions
+• Uncoordinated efforts can led to inconsistent views
+• Despite awareness of the emergence of this architecture from departmental autonomy, it is generally discouraged
+
+
+
+-------------------- Inmons Corporate INformation Factory (CIF) --------------------
+Back Room (Preparing)
+---------------------
+- Data Acquisition (ETL)
+
+Back and Front Room
+-------------------
+- Enterprice Data Warehouse + (3NF Database)
+- Data Delivery
+
+Front Room (End user)
+---------------------
+- Data Marts
+- At Application
+
+• 2 ETL processes
+	- Source systems -> 3NF DB
+	- 3NF DB -> Departmental data marts
+• The 3NF DB acts as an enterprise wide data store.
+	- Single integrated source of truth for data marts
+	- Could be accessed by end-users if needed
+• Data marts dimensionally modelled & unlike Kimballs dimensional models, they are mostly aggregated.
+
+Corporate Information Factory (CIF) build on a 3NF normalized database and then allow for documented data denormalization for Data Marts.
+
+
+
+-------------------- Hybrid Kimball bus & Inmos CIF --------------------
+Back Room (Preparing)
+---------------------
+- Data Acquisition (ETL)
+
+Back and Front Room
+-------------------
+- Enterprice Data Warehouse + (3NF Database)
+- Data Delivery
+
+Front Room (End user)
+---------------------
+- Enterprise SW bus architecture
+- At Application
+
+
+
+
+

@@ -125,9 +125,6 @@ album_table (album_id, album_name, atrist_name, year, list_of_songs)
 
 
 
--------------------- Fact & Dimension Tables --------------------
-
-
 
 
 

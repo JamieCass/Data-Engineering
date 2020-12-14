@@ -41,6 +41,8 @@ MAYBE A SINGLE REATIONAL DATABASE WONT SUFFICE!!!!
 
 
 
+
+
 -------------------- OPERATIONAL VS ANALYTICAL PROCESSES --------------------
 
 ----- Operational Processes (make it work!) ----- 
@@ -85,6 +87,8 @@ Data Warehouse: A system (including processes, technologies & data representatio
 
 
 
+
+
 -------------------- DATA WAREHOUSES  (TECHNICAL PERSPECTIVE) --------------------
 
 DWH Definition 1
@@ -108,6 +112,8 @@ A data warehouse is a system that retrieve and consolidates data periodically fr
 - Handles new questions well
 
 - Secure
+
+
 
 
 
@@ -152,7 +158,6 @@ STAR SCHEMA (joins with dimensions only, good for OLAP not OLTP)
 
 
 
--------------------- DWH ARCHITECTURE --------------------
 
 
 
