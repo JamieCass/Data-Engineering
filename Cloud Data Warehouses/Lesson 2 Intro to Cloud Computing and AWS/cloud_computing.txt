@@ -1,0 +1,9 @@
+-------------------- CLOUD COMPUTING --------------------
+--- Cloud computing: The practice of using a networks of remote servers hosted in the internet to store, manage and process data, rather than a local server or  personal computer.
+
+Advantages:
+• Eliminate need to invest in costly hardware upfront
+• Repidly provision resources
+• Provide efficient global access
+
+--- AWS: 
