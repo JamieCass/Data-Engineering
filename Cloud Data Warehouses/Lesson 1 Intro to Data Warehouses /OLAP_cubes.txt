@@ -7,6 +7,51 @@
 
 
 -------------------- Roll-up & Drill-down --------------------
-- Roll-up: Sum up the sales of each city: e.g. US, France (less columns in branch dimensions)
+----- Roll-up -----
+Sum up the sales of each city by Country: e.g. US, France (less columns in branch dimensions)
+
+----- Drill-down -----
+Decompose the sales of each city into smaller districts (more columns in branch dimension)
+
+- The OLAP cube should store the finest grain of data (atomic data), in case we need to drill down to the lowest level: e.g. Country -> City -> District -> Street, etc...
+
+
+
+-------------------- Slice & Dice --------------------
+----- Slice -----
+- Reducing N dimensions to N-1 dimensions by restricting one dimension to a single value
+- e.g. month = 'MAR'
+
+----- Dice -----
+- Same dimensions but computing a sub-cube by restricting some of the values of the dimension
+- e.g. month in ['FEB','MAR'] and movie in ['Avatar','Batman'] branch = 'NY'
+
+
+
+-------------------- Query Optimization --------------------
+- Business users will typically want to slice, dice, roll-up and drill-down all the time.
+
+- Each such combination will potentially go through all the facts table (suboptimal)
+
+- The 'GROUP by CUBE (movie, branch, month)' will make one pass through the facts table and will aggregate all possible combinations of groupings, of length 0, 1, 2 and 3 e.g.:
+• Total revenue 	• Revenue by movie 		• Revenue by movie, branch 		• Revenue by movie, branch, month
+					• Revenue by branch 	• Revenue by branch, month
+					• Revenue by month 		• Revenue by month, movie
+
+- Saving/Materializing the output of the CUBE operation and using it is usually enough to answer all forthcoming aggregations from business users without having to process the whole facts table again.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
