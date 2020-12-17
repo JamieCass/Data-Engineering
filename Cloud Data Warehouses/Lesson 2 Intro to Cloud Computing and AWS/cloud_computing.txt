@@ -6,4 +6,4 @@ Advantages:
 • Repidly provision resources
 • Provide efficient global access
 
---- AWS: 
+--- AWS: We will be using AWS during a lot of the course, mainly Redshift and S3.
