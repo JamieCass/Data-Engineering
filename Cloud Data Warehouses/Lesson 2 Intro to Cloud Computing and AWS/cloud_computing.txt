@@ -7,3 +7,35 @@ Advantages:
 • Provide efficient global access
 
 --- AWS: We will be using AWS during a lot of the course, mainly Redshift and S3.
+
+--- Redshift Cluster ---
+- IAM Role (myRedshiftRole)
+- Security gorup (redshift_security_group)
+- Create cluster in redshift:
+	• Cluster identifier: redshift-cluster
+	• Database name: dev
+	• Database port: 5439
+	• Master user name: awsuser
+	• Master user password and confirm password: enter a password
+- Additional Configuration:
+	• VPC security groups: redshift_security_group
+	• Available IAM roles: myRedshiftRole
+
+--- S3 Bucket ---
+- Create  bucket : unique bucket name
+- Upload files to bucket: add files
+
+--- PostgreSQL DB using RDS ---
+- Amazon RDS console
+- Create DB
+- PostgreSQL
+- Demonstation purposes: Dev/Test under Use case
+- DB Details page: Leave everything default, only chnage DB instance class: db.t2.small
+- DB instance indentifier: postgreSQL-test or any name of your choice
+- Enter master username and pw
+- Leave everything as default 
+- Backup: 1 day for demonstation purposes.
+
+-------------------- Key recommendations --------------------
+- Delete your Amazon Redshft cluster each time youre finished working with it.
+- Use a smaller subset of your data while you code and debug on AWS. Only execute with the full dataset on AWS as a final test of your code.
