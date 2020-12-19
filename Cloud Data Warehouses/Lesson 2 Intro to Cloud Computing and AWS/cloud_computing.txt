@@ -11,7 +11,7 @@ Advantages:
 --- Redshift Cluster ---
 - IAM Role (myRedshiftRole)
 - Security gorup (redshift_security_group)
-- Create cluster in redshift:
+- Create cluster in redshift: 
 	• Cluster identifier: redshift-cluster
 	• Database name: dev
 	• Database port: 5439

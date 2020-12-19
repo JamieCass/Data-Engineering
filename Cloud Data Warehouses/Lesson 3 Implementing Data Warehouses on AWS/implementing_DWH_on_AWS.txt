@@ -1,0 +1,45 @@
+-------------------- IMPLEMENTING A DWH ON AWS --------------------
+-- Choices for implementing a Data warehouse:
+1. Cloud:
+   	• Lower barrier to entry
+   	• May add as you need - its ok to change your opinion
+   	• Scalability & elasticity out of the box
+
+
+2. On-Premise:
+   Thik about:
+   	• Heterogeneity, scalability, elasticity of the tools, technologies and processes.
+   	• Need for diversse IT staff skills & multiple locatioons
+   	• Cost of ownership
+
+
+----- DWH Dimensional model storage on AWS -----
+-- Cloud-Managed:
+	• Amazon RDS (Relational Data Storage)
+	• Amazon DynamoDB
+	• Amazon S3
+	Re-use of expertise; Less IT staff for security, upgrades, etc.. Less OpEx
+	Deal with complexity with techniques like: 'Infrastructure as code'
+
+-- Self-Managed:
+	• EC2 + PostgreSQL
+	• EC2 + Cassandra
+	• EC2 + Unix FS
+	Always 'catch-all' option if needed
+
+
+														- AWS RDS
+												SQL --->- Redshift
+		     -> Cloud 		-> Cloud-managed -> NoSQL	  SQL based
+		    |									Files     Columnar
+DWH Storage |											  Massively parralel
+			|
+			 -> On-Premise 	-> Self-Managed  -> EC2 + ?
+
+
+
+
+-------------------- Amazon Redshift Technology --------------------
+
+
+
