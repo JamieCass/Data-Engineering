@@ -129,5 +129,64 @@ S3 offers a very reliable, scalable and worry-free storage solution, but it does
 
 
 
+-------------------- Redshift & ETL in Context --------------------
+See picture in folder for better understanding
+------------------
+- Sources -
+• Amazon S:
+	• Amazon S3
+• AWS RD:
+	• AWS RDS
+• Cassandra
+• Amazon DynamoDB
+• Amazon EC2
+------------------
+
+----- ETL ------
+• Amazon EC2
+
+------ Staging -----
+• CSV files
+• Amazon S3
+
+----- DWH -----
+• Amazon Redshift
+
+----- OLAP Cubes -----
+• Amazon S3
+• Cassandra
+• Amazon RDS
+
+----- BI Apps -----
+• Jupyter
+• Amazon Quicksight
+
+
+
+
+-------------------- Ingesting at Scale --------------------
+• To transfer data from a S3 staging area to redshift use the COPY command
+• Inserting data row by row using INSERT will be very slow!!!!!
+• If the file is large:
+	- It is better to break it up into myltiple files
+	- Ingest in parralel:
+		* Either using a comon prefix
+		* Or a manifest file
+• Other considerations:
+	- Better to ingest from the same AWS region
+	- Better to compress all the CSV files
+• One can also specify the delimeter to be used
+
+
+
+
+-------------------- Redshift ETL Example --------------------
+
+
+
+
+
+
+
 
 
