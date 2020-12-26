@@ -270,6 +270,7 @@ iam_role 'arn:aws:iam::0123456789012:role/MyRedshiftRole'
 	- AWS SDK
 	- Amazon Cloud formation
 
+	--------------------------------------
 
 	--- aws cli scripts ---
 	• Similar to bach scripts
@@ -293,6 +294,37 @@ iam_role 'arn:aws:iam::0123456789012:role/MyRedshiftRole'
 • We use its access token and secret to build our cluster and configure it, that should be our last 'click and fill' process
 
 
+
+
+-------------------- Optimizing table design --------------------
+• When a table is partitioned up into many pieces and distributed accross slices in different machines, this is done blindly
+• If one has an idea about the frequent access pattern of a tbale, one can choose a more clever strategy
+• The 2 possible strategies are:
+	- Distribution style
+	- Sorting key
+
+
+----- Distribution styles -----
+• EVEN distribution
+• ALL distribution
+• AUTO distribution
+• KEY distribution
+
+
+	--- EVEN --- (see picture for example)
+	• Round-robin over all slices to achieve load-balancing
+	• Good if a table wont be joined
+	Even distribution is not cost effective and will result in slow performance.
+
+	--- ALL --- (see picture for example)
+	• Distributes a table on all slices.
+	• A lot of replications but easier to join (no shuffeling)
+	All distribution is more cost effective and easier to JOIN.
+
+	--- AUTO --- (see picture for example)
+
+	
+	--- KEY --- (see picture for example)
 
 
 
