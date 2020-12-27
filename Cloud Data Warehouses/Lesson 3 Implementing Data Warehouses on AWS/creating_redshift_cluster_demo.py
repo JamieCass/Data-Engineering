@@ -13,7 +13,7 @@ response = redshift.create.cluster(
 	ClusterType=DWH_CLUSTER_TYPE,
 	NodeType=DWH_NODE_TYPE,
 	NumberOfNodes=int(DWH_NUM_N
-	# Identifiers & Credentials
+	# Identifiers & Credentials 
 	DBName=DWH_DB,
 	ClusterIdentifier=DWH_CLUSTER_IDENTIFIER,
 	MasterUsername=DWH_DB_USER,

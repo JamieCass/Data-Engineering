@@ -319,12 +319,34 @@ iam_role 'arn:aws:iam::0123456789012:role/MyRedshiftRole'
 	--- ALL --- (see picture for example)
 	• Distributes a table on all slices.
 	• A lot of replications but easier to join (no shuffeling)
+	• Used frequently for dimensional tables (AKA boradcasting)
 	All distribution is more cost effective and easier to JOIN.
 
 	--- AUTO --- (see picture for example)
-
+	• Leaves distribution to Redshift
+	• 'Small enough' tables are distributed with an ALL strategy
+	• Large tables are distributed with EVEN strategy
 	
 	--- KEY --- (see picture for example)
+	• Rows having similar values are places in the same slice
+	• This can lead to skewed distribution if some values of the dist key are more frequent than others
+	• Very useful when dimension table is too big to be distributed with ALL strategy. In that case we distribute both the fact table and dimension using the same key
+	• If two tables are distributed on the joing key, Redshift collocates the rows from both tables on the same slice
+
+
+
+
+-------------------- Sorting Key -------------------- 
+• One can define its columns as a sort key
+• Upon loading, rows are sorted before distribution to slices
+• Minimizes the quiery time since each node already has contiguous ranges of rows based on the sorting key
+• Useful for columns that are frequently in sorting like the date dimensions and its corresponding foreign key in the fact table
+
+
+
+
+
+
 
 
 

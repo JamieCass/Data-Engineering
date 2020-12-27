@@ -1,1 +1,26 @@
 -------------------- DWH TECHNOLOGIES --------------------
+The Last Mile: Delivering the analytics to users
+
+Data is available...
+• In an understandable & performant dimensional model
+• With conformed dimensions or seperate data marts
+• For users to report and visualize
+	• By interacting directly with the model
+	• Or in most cases, through a BI application
+
+
+-------------------- OLAP CUBES TECHNOLOGY --------------------
+OLAP cubes is a very convenient way for slicing, dicing and drilling-down
+
+How do we serve these OLAP cubes?
+• Approach 1: Pre-aggregate the OLAP cubes and saves them on a special purpose non-relational database (MOLAP)
+• Approach 2: Compute the OLAP cubes on the fly from the existing relational databases where the dimensional model resides (ROLAP)
+
+Demo: Column format in ROLAP
+• Use the postgresql with a columnar table extension
+• Load a dataset in a normal table
+• Load the same dataset in a columnar table
+• Compare the performance of the fact-aggregating query performance in both tables
+
+
+
