@@ -101,7 +101,17 @@ staging_songs_copy     = ("""COPY stage_songs
 
 songplay_table_insert = ("""INSERT INTO songplays (song_id, start_time,user_id, level, artist_id,
                                                   session_id,location, user_agent) 
-
+SELECT songs.song_id,
+       ts AS start_time,
+       user_id,
+       level,
+       songs.artist_id,
+       session_id,
+       location,
+       user_agent
+FROM stage_events events
+JOIN stage_songs songs ON (songs.artist_name = events.artist AND songs.duration = events.length)
+WHERE page = 'NextSong'
 """)
 user_table_insert = ("""INSERT INTO users (user_id, first_name, last_name, gender, level)
 SELECT DISTINCT user_id,
