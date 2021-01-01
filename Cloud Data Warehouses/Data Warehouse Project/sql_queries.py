@@ -65,7 +65,7 @@ user_table_create = ("""CREATE TABLE IF NOT EXISTS users (user_id varchar PRIMAR
 """)
 
 song_table_create = ("""CREATE TABLE IF NOT EXISTS songs (song_id varchar PRIMARY KEY, title varchar,
-      													     artist_id varchar, year int, duration numeric);
+      													    artist_id varchar, year int, duration numeric);
 """)
 
 artist_table_create = ("""CREATE TABLE IF NOT EXISTS artists (artist_id varchar PRIMARY KEY, name varchar,

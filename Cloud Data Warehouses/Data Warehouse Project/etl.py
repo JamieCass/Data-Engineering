@@ -4,6 +4,14 @@ from sql_queries import copy_table_queries, insert_table_queries
 
 
 def load_staging_tables(cur, conn):
+    '''
+    Function that will start loading data from a S3 bucket into our staging table using the COPY command.
+    This bulk load all the data into the two staging tables
+
+    Parameters:
+    cur: cursor to execute SQL queries
+    conn: connection to our redshift cluster, that we use to commit the changes
+    '''
     print('Loading data into staging tables')
     try:
         for query in copy_table_queries:
@@ -16,6 +24,13 @@ def load_staging_tables(cur, conn):
 
 
 def insert_tables(cur, conn):
+    '''
+    Function that will start inserting data from the staging tables into fact and dimension analytic tables.
+
+    Parameters:
+    cur: cursor to execute SQL queries
+    conn: connection to our redshift cluster, that we use to commit the changes
+    '''
     print('Loading data into fact & dimension tables')
     try:
         for query in insert_table_queries:
@@ -23,11 +38,14 @@ def insert_tables(cur, conn):
             conn.commit()
             
     except psycopg2.Error as e:
-            print('Error inserting into tables')
+            print('Error loading into fact/dimension tables')
             print(e)
 
 
 def main():
+    '''
+    Function that will run from the terminal and execute the code above.
+    '''
     config = configparser.ConfigParser()
     config.read('dwh.cfg')
 
