@@ -339,7 +339,7 @@ iam_role 'arn:aws:iam::0123456789012:role/MyRedshiftRole'
 -------------------- Sorting Key -------------------- 
 • One can define its columns as a sort key
 • Upon loading, rows are sorted before distribution to slices
-• Minimizes the quiery time since each node already has contiguous ranges of rows based on the sorting key
+• Minimizes the query time since each node already has contiguous ranges of rows based on the sorting key
 • Useful for columns that are frequently in sorting like the date dimensions and its corresponding foreign key in the fact table
 
 
