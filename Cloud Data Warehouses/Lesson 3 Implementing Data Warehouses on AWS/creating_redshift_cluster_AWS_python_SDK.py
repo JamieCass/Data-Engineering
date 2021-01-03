@@ -34,7 +34,7 @@ pd.DataFrame({"Param":
 
 
 ##########################################
-# Create clienmts for EC2, S3, IAM and Redshift
+# Create clients for EC2, S3, IAM and Redshift
 ##########################################
 ec2 = boto3.resource('ec2',
                   region_name='us-west-2',
@@ -133,7 +133,7 @@ except Exception as e:
 
 
 ##########################################
-# Step 2.1: Describe cluster to see it status
+# Step 2.1: Describe cluster to see its status
 ##########################################
 def prettyRedshiftProps(props):
     pd.set_option('display.max_colwidth', -1)
@@ -176,7 +176,7 @@ except Exception as e:
 # Step 4: Make sure you can connect to cluster
 ##########################################
 %load_ext sql
-conn_string="postgresql://{}:{}@{}:{}/{}".format(DWH_DB_USER, DWH_DB_PASSWORD, DWH_ENDPOINT, DWH_PORT,DWH_DB)
+conn_string="postgresql://{}:{}@{}:{}/{}".format(DWH_DB_USER, DWH_DB_PASSWORD, DWH_ENDPOINT, DWH_PORT, DWH_DB)
 print(conn_string)
 %sql $conn_string
 
