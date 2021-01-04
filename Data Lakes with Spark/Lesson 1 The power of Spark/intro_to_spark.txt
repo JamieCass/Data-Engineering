@@ -1,0 +1,77 @@
+-------------------- Intro into Spark --------------------
+Spark is currently one of the most popular tools for big data analytics. 
+Optimised to use memory, rather than storage.
+
+
+
+-------------------- Hardware --------------------
+----- CPU -----
+Central Processing Unit, the 'Brain' of the computer. Every process on a computer is eventually handles by the CPU.
+• E.G.
+  A 2.5GHZ CPU means it processes 2.5 billion operations per second.
+
+
+----- Memory (RAM) -----
+When a computer runs, data gets temporarily stored in memory before getting sent to the CPU. Memory is 'ephemeral' storage - when the computer is shut down, the data in the memory is lost.
+• Known to be 'efficent, expensive and ephemeral'
+
+
+----- Storage -----
+SSD or Magnetic Disk, storage is used for keeping data over long periods of time. When a program runs, the CPU will direct the memory to temporarily load the data from long-term storage.
+
+
+----- Network -----
+LAN or internet, network is the gateway for anything that you need that isnt stored on your computer. The network could connect to other computers in the dame room (a Local Area Network) or a computer on the other side of the world, connected over the internet.
+• Transferring data across a netwrok i.e between computers is the biggest bottleneck when working with big data. One advantage of Spark is that it only shuffles data between computers when it absolutely has to.
+
+
+----- Key ratios -----
+Fastest | CPU 		200x faster than memory
+		|
+		| Memory 	15x fatser than SSD
+		|
+		| SSD 		20x faster than networl
+		|
+Slowest | Network 	Have to download data first
+
+
+
+
+-------------------- Data Numbers --------------------
+Reading in chunks of data with pandas, link below on how it works.
+https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html#io-chunking
+
+----- Small data numbers -----
+With small data (less than a year), we can usually load it onto our memory and process it easily and quickly. We filter out any unnecessary data and extract only what it needed.
+
+----- Big data numbers -----
+When you have a large amount of data (years) your computer will struggle to process it like it did the small data. Will probably slow your whole machine down and you wont be able to execute to code to process it correctly (the memory and storage are the bottleneck). Easier to break the data up and distribute it across many different machines.
+
+----- Medium data numbers -----
+If a dataset is larger than the size of your RAM you can still analyze your data with 1 computer. Pandas can split data up into chunks and then you can analyze parts of the data at a time. 
+
+
+
+----- Distributed Computing -----
+Distributed computing, each CPU has its own meory
+Each computer/machine is connected to the other machines across a network
+
+----- Parallel Computing -----
+In general parallel computing implies multiple CPUs sharing the same memory.
+
+
+
+
+-------------------- Hadoop Ecosystem --------------------
+• Hadoop - an ecosystem of tools for big data storage and data analysis. Its older than Spark but is still used by many companies. Hadoop and Spark use memory differently. Hadoop writes intermediate results to disk whereas Spark tries to keep data in memory whenever possible. This makes Spark faster for many use cases.
+
+• Hadoop MapReduce - a system for processing and analyzing large data sets in parallel.
+
+• Hadoop YARN - a resource manager that schedules jobs across a cluster, keeps track of what computer resources are available and then assigns thos resources to specific tasks.
+
+• Hadoop Distributed File System (HDFS) - a big data storage system that splits data into chunks and stores them across a cluster of computers.
+
+
+
+
+

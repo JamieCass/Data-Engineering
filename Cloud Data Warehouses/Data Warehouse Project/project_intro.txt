@@ -7,7 +7,7 @@ As their dara engineer, you are tasked with building an ETL pipeline that extrac
 
 
 - Project Description
-In this project you will appy what youve learned on data warehouses and AWS to buils an ETL pipeline for a database hosted on Redshift. To complete the project, you will need to load data from S3 to staging tables on Redshift and execute SQL statements that create the analytics tables from these storing tables.
+In this project you will apply what youve learned on data warehouses and AWS to build an ETL pipeline for a database hosted on Redshift. To complete the project, you will need to load data from S3 to staging tables on Redshift and execute SQL statements that create the analytics tables from these storing tables.
 
 
 ---------------- Project Instructions ----------------
