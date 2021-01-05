@@ -63,13 +63,67 @@ In general parallel computing implies multiple CPUs sharing the same memory.
 
 
 -------------------- Hadoop Ecosystem --------------------
-• Hadoop - an ecosystem of tools for big data storage and data analysis. Its older than Spark but is still used by many companies. Hadoop and Spark use memory differently. Hadoop writes intermediate results to disk whereas Spark tries to keep data in memory whenever possible. This makes Spark faster for many use cases.
+• Hadoop (Utilities) - an ecosystem of tools for big data storage and data analysis. Its older than Spark but is still used by many companies. Hadoop and Spark use memory differently. Hadoop writes intermediate results to disk whereas Spark tries to keep data in memory whenever possible. This makes Spark faster for many use cases.
 
-• Hadoop MapReduce - a system for processing and analyzing large data sets in parallel.
+• Hadoop MapReduce (Data processing) - a system for processing and analyzing large data sets in parallel.
 
-• Hadoop YARN - a resource manager that schedules jobs across a cluster, keeps track of what computer resources are available and then assigns thos resources to specific tasks.
+• Hadoop YARN (Resource manager) - a resource manager that schedules jobs across a cluster, keeps track of what computer resources are available and then assigns thos resources to specific tasks.
 
-• Hadoop Distributed File System (HDFS) - a big data storage system that splits data into chunks and stores them across a cluster of computers.
+• Hadoop Distributed File System (HDFS) (Data storage) - a big data storage system that splits data into chunks and stores them across a cluster of computers.
+
+
+As Hadoop matured, other tools were developed to make Hadoop easier to work with. These tools included:
+• Apache Pig - a SQL-like language that runs on top of Hadoop MapReduce
+
+• Apache Hive - another SQL-like interface that runs on top of Hadoop MapReduce.
+
+Most of the time when people are talking about Hadoop, they are really talking about MapReduce.
+
+----- Streaming Data -----
+Data streaming is a specialized topic in big data, the use case is when you want to store and analyze data in real-time such as Facebook posts or Twitter tweet. 
+Spark has a streaming library called Spark Streamin although its not as popular or as fast as other streaming libraries. Other popular streaming libraries are Storm and Flink. Look them uo to learn more about them.
+
+
+-------------------- MapReduce --------------------
+MapReduce is a programming technique for manipulating large data sets. 'Hadoop MapReduce' is a specific implementation of this programming technique.
+
+----- How it works -----
+• (MAP) First it divides up a large dataset and distributes the data across a cluster. In the map step, each data is analyzed and converted into a (key, value) pair/tuple.
+• Then these key-value pairs are shuffled across the cluster so that all keys are on the same machine.
+• (REDUCE) The final step is the reduce step, where all the values with the same keys are combined together.
+
+Although Spark doesnt implement MapReduce, you can write Spark programs that behave in a similar way to the map-reduce paradigm
+
+
+
+
+-------------------- The Spark Cluster --------------------
+• Spark local mode - everything happens on a single machine, useful for getting used to the syntax and testing/prototyping your code.
+
+
+
+
+-------------------- Spark Use Cases --------------------
+Some of Spark use cases are:
+• Data analytics
+• Machine learning
+• Streaming 
+• Graph analytics
+
+----- You dont always need Spark -----
+Spark is meant for big data sets that cant fit on one computer. You dont need Spark if you are working on smaller data sets, if you have data sets that can fit onto your local computer you can use other options such as:
+• AWK - a command line tool for manipulating text files
+• R - a programming language and software environment for statistical computing 
+• Python PyData Stack - includes pandas, Matplotlib, NumPy and even scikit-learn among other libraries
+
+Sometimes you can use pandas on a single machine even if your data is only a little bigger than your memory. Pandas can read data in chunks, depending on your use case, you can filter the data to write out the relevent parts to disk.
+
+-------------------- Spark's Limitations --------------------
+Sparks streamings latency is at least 500 milliseconds since it operates on micro-batches of records, instead of processing once record at a time. Mative straming tools such as Storm, Apex or Flink can oush down this latency values and might be more suitable. Flink and Apex can be used for batch computation as well.
+
+Another limitation of Spark is its selection of amchine learning algorithms. Currently Spark only supports algorithms that scale linearly with the input data size. In general, deep learning is not available either, though many projects intergrate Spark with Tensorflow and other deep learning tools.
+
+
 
 
 
