@@ -22,6 +22,11 @@ def load_staging_tables(cur, conn):
         print('Error loading data into staging tables')
         print(e)
 
+# function to get the name for each query being ran.. Got stuck on this during the project
+def get_object_name(obj, test_globals = globals()):
+    for name in test_globals:
+        if test_globals[name] == obj:
+            return name
 
 def insert_tables(cur, conn):
     '''
@@ -36,7 +41,9 @@ def insert_tables(cur, conn):
         for query in insert_table_queries:
             cur.execute(query)
             conn.commit()
-            
+            table_name = get_object_name(query)
+            print('Loading {}'.format(table_name))
+
     except psycopg2.Error as e:
             print('Error loading into fact/dimension tables')
             print(e)

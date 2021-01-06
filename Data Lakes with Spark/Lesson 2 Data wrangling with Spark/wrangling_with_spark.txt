@@ -1,0 +1,13 @@
+-------------------- Wrangling data with Spark --------------------
+Spark is written in a functional programming language.. Scala. You can use Spark with other languages such as Java, R, Python
+
+----- Why use functional programming -----
+Functional programming is perfect for distributed systems. 
+
+
+----- MAPS -----
+Most common function in Spark.
+We use lambda functions a lot in Spark (see jupyter notebook on this)
+
+
+
