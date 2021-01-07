@@ -10,4 +10,66 @@ Most common function in Spark.
 We use lambda functions a lot in Spark (see jupyter notebook on this)
 
 
+----- Data formats -----
+The most common data formats when using spark will be:
+• CSV
+• JSON
+• HTML
+• XML
+
+----- Distributed data stores -----
+• S3
+• HDFS 
+
+
+
+
+-------------------- Spark Session --------------------
+The first component to a spark session is the SparkContext. This is the main entry point and connects the cluster with the application. 
+
+To create a spark context we need to import and set everything up.
+E.G 
+from pyspark import SoarkContext, SparkConf
+
+configure = SparkConf().setAppName('name').setMaster('IP Address') or ('local') - if its being ran in local mode
+
+sc = SparkContext(conf = configure)
+
+-----------------
+
+To read dataframes we need to import the SQL part of spark
+E.G
+from pyspark sql import SparkSession 
+
+spark = SparkSession \ 
+.builder \
+.appName('app name')\
+.config('config option', 'config value') \
+.getOrCreate() - this means it will create the session if it hasnt already been done, otherwise it will create a new one.
+
+
+
+
+-------------------- Imerative vs Declarative Programming --------------------
+----- Imperative Programming -----
+Spark Dataframes & python
+- Cares about 'How?' (how to get to the end result)
+E.G your sisters birthday
+	- get in your car and drive to bakery
+	- buy a cake from the bakery
+	- drive home and give it to your sister
+
+
+----- Declarative Programming -----
+SQL
+- Cares about 'What?' (what the end result is)
+E.G, your sisters birthday
+	- get a cake
+
+
+
+
+-------------------- Data Wrangling with Dataframes --------------------
+
+
 
