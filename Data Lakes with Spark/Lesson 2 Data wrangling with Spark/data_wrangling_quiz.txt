@@ -1,0 +1,30 @@
+-------------------- QUIZ --------------------
+Use the 'sparkify_log_small.json' file in Spark. Youll need to wrangle the data to find the answers.
+
+• 1. Which page did userId '' (empty string) NOT visit?
+		- About
+		- Home
+		- Login
+		- NextSong
+
+• 2. What type of user does the empty string user id most likely refer to?
+
+
+• 3. How many female users do we have in the data set?
+		- 462
+		- 501
+		- 3820
+		- 5844
+
+• 4. How many songs were played from the most played artist?
+		- 3
+		- 53
+		- 83
+		- 113
+
+• 5. How many songs do users listen to on average between visiting our home page? Round to the nearest integer.
+		- 5
+		- 7
+		- 9
+		- 11	
+
