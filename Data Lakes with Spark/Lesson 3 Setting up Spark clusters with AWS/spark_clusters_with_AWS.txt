@@ -1,0 +1,25 @@
+-------------------- Spark Clusters with AWS --------------------
+----- Overview -----
+By the end of the lesson, we will be able to
+• Distinguish between setting up a Spark cluster using both local and standalone mode
+• Set up Spark cluster on AWS
+• User Spark UI
+• Use AWS CLI
+• Create EMR  using AWS CLI
+• Create EMR cliuster
+• Test port forwarding
+• Use notebooks on your Spark cluster
+• Write Spark scripts
+• Store and retrieve data on the cloud
+• Read and write to Amazon S3 
+• Understand the distinction between HDFS and S3 
+• Reading and writing data to HDFS
+
+
+
+
+-------------------- From Local to Standalone Mode --------------------
+
+
+
+

@@ -110,9 +110,18 @@ https://spark.apache.org/docs/latest/api/python/index.html
 
 
 
+-------------------- Spark SQL --------------------
+Some good resources that might be helpful when working with Spark SQL
+- Spark SQL built in functions:
+	https://spark.apache.org/docs/latest/api/sql/index.html
+- Spark SQL guide:
+	https://spark.apache.org/docs/latest/sql-getting-started.html
 
 
 
+-------------------- RDDs --------------------
+RDDs are a low-level abstraction of the data. We worked with RDDs in the firts Spark version. You can think of RDDs as long lists distributed across various machines. You can still use RDDs as parks of the Spark code although data frames and SQl are easier.
 
-
+- RDD programming guide:
+	https://spark.apache.org/docs/latest/rdd-programming-guide.html
 

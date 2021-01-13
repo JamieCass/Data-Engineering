@@ -1,9 +1,5 @@
 ########################## Data wrangling Quiz ##########################
-import os
-import sys
 
-os.environ['PYSPARK_PYTHON'] = sys.executable
-os.environ['PYSPARK_DRIVER_PYTHON'] = sys.executable
 # TODOS: 
 # 1) import any other libraries you might need
 from pyspark.sql import SparkSession
@@ -61,10 +57,10 @@ print('Someone without an account, they dont have access to anything such as set
 ########################## Question 3 ##########################
 # How many users are female?
 # TODO: write your code to answer question 3
-females = user_log.filter(user_log.gender == 'F') \
-    .select('userId') \
-    .dropDuplicates()
-females.count()
+user_log.filter(user_log.gender == 'F') \
+    .select('userId', 'gender') \
+    .dropDuplicates() \
+    .count()
 
 
 ########################## Question 4 ##########################
