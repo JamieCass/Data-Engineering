@@ -79,7 +79,6 @@ spark.sql('''
 play_counts = spark.sql("SELECT Artist, COUNT(Artist) AS plays \
         FROM sql_table \
         GROUP BY Artist")
-
 # save the results in a new view
 play_counts.createOrReplaceTempView("artist_counts")
 

@@ -45,22 +45,25 @@ for row in set(all_pages.collect()) - set(empty_user.collect()):
    
 print('\nPages visited:')
 for row in set(empty_user.collect()):
+
     print(row.page)
 
 
 ########################## Question 2 ##########################
 # What type of user does the empty string user id most likely refer to?
 # TODO: use this space to explore the behavior of the user with an empty string
-print('Someone without an account, they dont have access to anything such as settings or anything a member (free/paid) would, they havent even logged in. They would need to log in to acces anything like that.')
+print('\nSomeone without an account, they dont have access to anything such as settings or anything a member (free/paid) would, they havent even logged in. They would need to log in to acces anything like that.\n')
 
 
 ########################## Question 3 ##########################
 # How many users are female?
 # TODO: write your code to answer question 3
-user_log.filter(user_log.gender == 'F') \
+females = user_log.filter(user_log.gender == 'F') \
     .select('userId', 'gender') \
     .dropDuplicates() \
     .count()
+print(f'Famale users: {females}\n')
+
 
 
 ########################## Question 4 ##########################
