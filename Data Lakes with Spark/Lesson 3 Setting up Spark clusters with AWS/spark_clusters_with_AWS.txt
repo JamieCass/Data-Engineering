@@ -18,7 +18,7 @@ By the end of the lesson, we will be able to
 
 
 
- -------------------- From Local to Standalone Mode --------------------
+ --------------------  From Local to Standalone Mode --------------------
 - Spark Cluster Managers
 	• Standalone mode (we will be doing this)
 	• MESOS (for sharing with a whole team of engineers and analysts)

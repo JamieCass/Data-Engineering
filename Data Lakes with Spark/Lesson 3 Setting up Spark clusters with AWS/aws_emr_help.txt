@@ -92,7 +92,7 @@ Launch your cluster - Run the script below to launch your cluster. Be sure to in
 [Optional] Specify your bootstrap file - You should save an executable (bootstrap_emr.sh file) in an accessible S3 location. You can specify this option as, for example, --bootstrap-actions Path=s3://mybucket/bootstrap_emr.sh in the script below. A sample file is provided in the Github repo here.
 
 # Add your cluster name, and EC2 private key file name
-aws emr create-cluster --name <YOUR_CLUSTER_NAME> --use-default-roles --release-label emr-5.28.0 --instance-count 3 --applications Name=Spark  --ec2-attributes KeyName=<YOUR_EC2_KEY_FILE_NAME> --instance-type m5.xlarge --instance-count 3 --auto-terminate
+aws emr create-cluster --name <YOUR_CLUSTER_NAME> --use-default-roles --release-label emr-5.28.0 --instance-count 3 --applications Name=Spark  --ec2-attributes KeyName=<.pem file name> --instance-type m5.xlarge --instance-count 3 --auto-terminate
 
 Notice two things in the command above.
 
