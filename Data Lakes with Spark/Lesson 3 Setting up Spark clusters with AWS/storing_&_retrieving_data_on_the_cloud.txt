@@ -1,0 +1,36 @@
+-------------------- Storing & Retrieving Data on the cloud --------------------
+The most common is Amazons Simple Storage Service (S3) and its great because its: 
+• Safe
+• Easy to use
+• Cheap
+
+----- S3 Buckets -----
+With S3 its not like Dropbox or Google Drive. S3 Stores an object and wheh you identify an object, you need to specify a bucket and ket to indentify the object.
+
+- e.g.
+df = spark.read.load('s3://my_bucket/path/to.file/file.csv')
+
+From this code 's3://my_bucket' is the bucket and 'path/to/etc...' is the key to the object. If we're using spark all the objects underneath the bucket have the same shema, you can do something like below.
+
+df = spark.read.load('s3://my_bucket/')
+
+This will generate a dataframe of all the objects underneath the 'my_bucket' with the same schema. 
+
+- e.g.
+my_bucket
+  |---test.csv
+  path/to/
+     |--test2.csv
+     file/
+       |--test3.csv
+       |--file.csv
+
+If all the csv files underneath my_bucket, which are test.csv, test2.csv, test3.csv and file.csv have the same schema, the dataframe withh be generated without error. BUT if there are conflicts in the schema between files it wont be generated. As an engineer you need to be careful how you organize your data lake.
+
+
+
+
+
+
+
+
