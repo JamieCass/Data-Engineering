@@ -35,7 +35,7 @@ By the end of the lesson, we will be able to
 • Standalone mode: You are defining Spark Primary and Secondary to work on your (virtual) machine. You can do this on EMR or your machine. Standalone modes uses a resource managaer like YARN or MESOS
 
 
-								----- EC2 vs EMR -----
+								 --------- EC2 vs EMR ---------
 						AWS EMR							AWS EC2
 ----------------------------------------------------------------------------
 Distributed computing	Yes								Yes

@@ -9,6 +9,8 @@ With S3 its not like Dropbox or Google Drive. S3 Stores an object and wheh you i
 
 - e.g.
 df = spark.read.load('s3://my_bucket/path/to.file/file.csv')
+or 
+df = spark.read.json(path of file)
 
 From this code 's3://my_bucket' is the bucket and 'path/to/etc...' is the key to the object. If we're using spark all the objects underneath the bucket have the same shema, you can do something like below.
 
@@ -25,7 +27,24 @@ my_bucket
        |--test3.csv
        |--file.csv
 
-If all the csv files underneath my_bucket, which are test.csv, test2.csv, test3.csv and file.csv have the same schema, the dataframe withh be generated without error. BUT if there are conflicts in the schema between files it wont be generated. As an engineer you need to be careful how you organize your data lake.
+If all the csv files underneath my_bucket, which are test.csv, test2.csv, test3.csv and file.csv have the same schema, the dataframe will be generated without error. BUT if there are conflicts in the schema between files it wont be generated. As an engineer you need to be careful how you organize your data lake.
+
+It will load data quicker if you put 's3n://etc...' the 'n' will make the data load quicker apparently..
+
+
+
+
+-------------------- Difference between HDFS and S3 --------------------
+Since spark doesnt have its own distributed storage system, it leverages using HDFs and AWS S3, or any other storage. 
+
+• S3 is an object storage system that sources the data using key value pairs, namely bucket and key. HDFS is an actual distributed system which guarantees fault tolerance. HDFS achieves this by having duplicate factors, which means it will duplicate the same files at 3 different nodes across the cluster by default (it can be configured to different numbers of duplication)
+
+• HDFS has usually been install in on-premise systems and tradintionally have had engineers on-site maintain and troubleshoot Hadoop Ecosystem, which costs more than having data on the cloud. Due to flexibility of location and reduced cost of maintenance, cloud solutions have been more popular. With extensive services you can use within AWS, S3 has been a more popular choice than HDFS
+
+• Since S3 is a binary object store, it can store all kinds of formats, even imaged and videos. HDFS will strictly require a certain fie format - the popular choices are 'arvo' or 'parquet', which have relatively high compression rate which makes it useful to store large datasets.
+
+
+
 
 
 

@@ -42,10 +42,10 @@ E.G
 from pyspark sql import SparkSession 
 
 spark = SparkSession \ 
-.builder \
-.appName('app name')\
-.config('config option', 'config value') \
-.getOrCreate() - this means it will create the session if it hasnt already been done, otherwise it will create a new one.
+	.builder \
+	.appName('app name')\
+	.config('config option', 'config value') \
+	.getOrCreate() - this means it will create the session if it hasnt already been done, otherwise it will create a new one.
 
 
 
@@ -98,6 +98,7 @@ There are many ways to express the same aggregations.
 In Spark we can define our own dunftions with the udf method from the pyspark.sql.funcitons module. The default type of the returned variable for UDFs is a string. If we want to return another type we need to explicitly do so by using the different types from pyspark.sql.functions module.
 
 
+
 ----- Window Functions -----
 Window functions are a way of combining the values of ranges of rows in a DF. When defining the window we can choose how to sort and group (with the partitionBy method) the rows and how wide of a window we'd like to use (described by rangeBetween or rowsBetween).
 
@@ -120,7 +121,8 @@ Some good resources that might be helpful when working with Spark SQL
 
 
 -------------------- RDDs --------------------
-RDDs are a low-level abstraction of the data. We worked with RDDs in the firts Spark version. You can think of RDDs as long lists distributed across various machines. You can still use RDDs as parks of the Spark code although data frames and SQl are easier.
+----- Resilient Distributed Datasets -----
+RDDs are a low-level abstraction of the data. We worked with RDDs in the first Spark version. You can think of RDDs as long lists distributed across various machines. You can still use RDDs as parks of the Spark code although data frames and SQl are easier.
 
 - RDD programming guide:
 	https://spark.apache.org/docs/latest/rdd-programming-guide.html

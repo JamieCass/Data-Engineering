@@ -57,8 +57,8 @@ Let’s break down the command and go over each option to know its responsibilit
 • --instance-type: Specify the type of instances you want to use. Detailed list can be accessed here, but find the one that can fit your data and your budget.
 • --log-uri: S3 location to store your EMR logs in. This log can store EMR metrics and also the metrics/logs for submission of your code.
 
-=======================================================================
-My code looked like this:
+================================ MY CODE ================================
+
 aws emr create-cluster --name 'my test cluster' \
 --use-default-roles --release-label emr-5.28.0 \
 --instance-count 3 --applications Name=Spark \
@@ -124,7 +124,7 @@ Go to the EC2 dashboard, and select the instance you want to connect using the S
 
 Connect using the SSH protocol. You can run the commands shown in the figure below in your terminal.
 
-For example, use ssh -i /Users/jamie/Coding/keys/testkey.pem hadoop@ec2-3-129-70-211.us-east-2.compute.amazonaws.com
+For example, use ssh -i /Users/jamie/Coding/keys/testkey.pem hadoop@##################################
 
 
 ----- 2.5. View Spark UI hosted on the EMR Clusters
@@ -134,8 +134,8 @@ Step 1. Set Up an SSH Tunnel to the Master Node Using Dynamic Port Forwarding
 
 Enable the dynamic port forwarding using the command. This command does not returns a response.
 
-=======================================================================
-ssh -i /Users/jamie/Coding/keys/testkey.pem -N -D 8017 hadoop@ec2-3-129-70-211.us-east-2.compute.amazonaws.com
+================================ MY CODE ================================
+ssh -i /Users/jamie/Coding/keys/testkey.pem -N -D 8017 hadoop@##################################
 =======================================================================
 Replace the .pem file name and the master node public DNS for you. In the above example, the .pem is residing in the present working folder. If your .pem is placed in any different folder, you can provide the complete path.
 
@@ -144,8 +144,8 @@ In the command above, the -D option is used for specifying a local port (8157) t
 
 Now, you'd want to copy your .pem file (EC2 log in private key) to the master node. You can securely copy your .pem file from your local computer to the master node, using:
 
-=======================================================================
-scp -i /Users/jamie/Coding/keys/testkey.pem -r /Users/jamie/Coding/keys/testkey.pem hadoop@ec2-3-129-70-211.us-east-2.compute.amazonaws.com:/home/hadoop/
+================================ MY CODE ================================
+scp -i /Users/jamie/Coding/keys/testkey.pem -r /Users/jamie/Coding/keys/testkey.pem hadoop@##################################:/home/hadoop/
 =======================================================================
 You can use a similar command to copy any other script, if required.
 
