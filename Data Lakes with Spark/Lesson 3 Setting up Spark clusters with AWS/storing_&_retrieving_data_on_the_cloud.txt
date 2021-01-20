@@ -32,7 +32,19 @@ If all the csv files underneath my_bucket, which are test.csv, test2.csv, test3.
 It will load data quicker if you put 's3n://etc...' the 'n' will make the data load quicker apparently..
 
 
+----- HDFS -----
+To copy to HDFS, you need to first put the data onto the EMR instance..
+e.g
+scp ~/<file path ti the files you want to copy> <path of EMR instance>
 
+Then you need to make a directiry in HDFS
+hdfs dfs -mkdir /user/<name of folder>
+
+Then you need to copy from EMR to the HDFS folder you just created
+hdfs dfs -copyFromLocal <name of file> /user/<name of folder>/
+
+e.g. for reding in the file
+sparkify_log_path2 = 'hdfs:///user/sparkify_data/sparkify_log_small.json'
 
 -------------------- Difference between HDFS and S3 --------------------
 Since spark doesnt have its own distributed storage system, it leverages using HDFs and AWS S3, or any other storage. 
