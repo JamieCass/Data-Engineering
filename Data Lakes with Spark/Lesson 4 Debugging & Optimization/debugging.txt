@@ -1,0 +1,25 @@
+-------------------- Debugging is HARD --------------------
+• Previously we ran Spakr in local mode where we can easily fix the code on our laptop because we can view the error on the local machine.
+• For Standalone mode, the cluster (group of manage and executor) load data, distributes the task among them and the executor executes the code.The result is either a succesful output or a log of errors, which makes it important to intertret the syntax of logs - this can get tricky.
+• One thing that makes the standalone mode difficult to deploy code is that your laptop environments will be completely different than AWS EMR or other cloud systems. As a result you will always have to test your code rigorously on different environment ssettings to make sure the code works.
+
+----- Syntax Errors -----
+One main thing to remember is Spark uses 'Lazy Evaluation', so it waits to run code on the data, and it wont error straight away!!!
+
+
+-----Data Errors -----
+You can get data errors come up if any part of the data doesnt match the schema and if NaN or nulls are present. (it wont always crash your code either!!)
+
+----- Debugging your code -----
+Remember spark always works with a copy of the input data, so the main data isnt effected. So that means, with the original debugging variable code, it wont get loaded onto the worker nodes.. To get around these limitations Spakr gives us special variables knows as accumulators. Accumulators are like global variables for the entire cluster! 
+
+----- Accumulators -----
+Accumulators are variables that accumulate. Because Spark runs in distributed mode, the workers are running in parralel, but asynchronously. 
+e.g. 
+Worker 1 will not be able to know how far worker 2 and worker 3 are done with their tasks. With the same analogy, the variables that are local to workers are not going ot be shared to another worker unless you acumulate them. Accumulators are mostly used for sum operations, like in Hadoop MapReduce, but we can implelement them to do otherwise. 
+Accumulators can be useful but they can also be a nightmare, so make sure you use them carefully!!! 
+
+
+
+
+
