@@ -13,11 +13,15 @@ You can get data errors come up if any part of the data doesnt match the schema 
 ----- Debugging your code -----
 Remember spark always works with a copy of the input data, so the main data isnt effected. So that means, with the original debugging variable code, it wont get loaded onto the worker nodes.. To get around these limitations Spakr gives us special variables knows as accumulators. Accumulators are like global variables for the entire cluster! 
 
------ Accumulators -----
+-------------------- Accumulators --------------------
 Accumulators are variables that accumulate. Because Spark runs in distributed mode, the workers are running in parralel, but asynchronously. 
 e.g. 
 Worker 1 will not be able to know how far worker 2 and worker 3 are done with their tasks. With the same analogy, the variables that are local to workers are not going ot be shared to another worker unless you acumulate them. Accumulators are mostly used for sum operations, like in Hadoop MapReduce, but we can implelement them to do otherwise. 
 Accumulators can be useful but they can also be a nightmare, so make sure you use them carefully!!! 
+
+----- Spark Broadcast ----- 
+Spark Broadcast variables are secured, read-only variables that get disributed and cached to worker nodes. This is helful to Spark because when the driver sends packets of information to worker nodes, it sends the data and tasked attached together which could be heavier on the netowrk side. Broadcast variabel seek to reduce overhead and to reduce communications. Broadcast variables are only used with Spark Context.
+- Broadcast join allows you to join large tables to small tables in Spark.  
 
 
 
