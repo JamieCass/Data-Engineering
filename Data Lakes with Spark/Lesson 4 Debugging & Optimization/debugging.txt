@@ -23,6 +23,8 @@ Accumulators can be useful but they can also be a nightmare, so make sure you us
 Spark Broadcast variables are secured, read-only variables that get disributed and cached to worker nodes. This is helful to Spark because when the driver sends packets of information to worker nodes, it sends the data and tasked attached together which could be heavier on the netowrk side. Broadcast variabel seek to reduce overhead and to reduce communications. Broadcast variables are only used with Spark Context.
 - Broadcast join allows you to join large tables to small tables in Spark.  
 
+----- Spark UI -----
+Spakr has a User Interface
 
 
 
