@@ -28,7 +28,7 @@ user_log.createOrReplaceTempView("user_log_table")
 
 spark.sql("SELECT * FROM user_log_table LIMIT 2").show()
 
-# Same as above but a lot nicer to read (proper way to writes SQL queries)
+# Same as above but a lot nicer to read (proper way to write SQL queries)
 spark.sql('''
           SELECT * 
           FROM user_log_table 

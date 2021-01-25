@@ -24,7 +24,8 @@ Spark Broadcast variables are secured, read-only variables that get disributed a
 - Broadcast join allows you to join large tables to small tables in Spark.  
 
 ----- Spark UI -----
-Spakr has a User Interface
+Spark has a User Interface and it helps measure the health of our Spakr jobs.. 
+The Spark UI shows the cluster configuration, DAG broken up into stages and within each stage there are individual tasks
 
 
 
