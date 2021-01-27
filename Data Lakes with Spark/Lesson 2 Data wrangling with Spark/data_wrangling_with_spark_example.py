@@ -9,7 +9,6 @@ from pyspark.sql import Window
 import datetime
 import numpy as np
 import pandas as pd
-%matplotlib inline
 import matplotlib.pyplot as plt
 
 
@@ -20,7 +19,7 @@ spark = SparkSession \
     .builder \
     .appName("Wrangling Data") \
     .getOrCreate()
-path = "/sparkify_log_small.json"
+path = "sparkify_log_small.json"
 user_log = spark.read.json(path)
 
 
