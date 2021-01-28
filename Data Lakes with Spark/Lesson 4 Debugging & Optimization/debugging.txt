@@ -13,6 +13,9 @@ You can get data errors come up if any part of the data doesnt match the schema 
 ----- Debugging your code -----
 Remember spark always works with a copy of the input data, so the main data isnt effected. So that means, with the original debugging variable code, it wont get loaded onto the worker nodes.. To get around these limitations Spakr gives us special variables knows as accumulators. Accumulators are like global variables for the entire cluster! 
 
+
+
+
 -------------------- Accumulators --------------------
 Accumulators are variables that accumulate. Because Spark runs in distributed mode, the workers are running in parralel, but asynchronously. 
 e.g. 
@@ -23,9 +26,54 @@ Accumulators can be useful but they can also be a nightmare, so make sure you us
 Spark Broadcast variables are secured, read-only variables that get disributed and cached to worker nodes. This is helful to Spark because when the driver sends packets of information to worker nodes, it sends the data and tasked attached together which could be heavier on the netowrk side. Broadcast variable seek to reduce overhead and to reduce communications. Broadcast variables are only used with Spark Context.
 - Broadcast join allows you to join large tables to small tables in Spark.  
 
------ Spark UI -----
+
+
+
+-------------------- Spark UI --------------------
 Spark has a User Interface and it helps measure the health of our Spakr jobs.. 
 The Spark UI shows the cluster configuration, DAG broken up into stages and within each stage there are individual tasks
+Spark uses a variety of ports to connect to its nodes. Some of the common port we will use from time to time are:
+8080 - UI for the master node IMPORTANT 
+8888 - Jupyter notebooks
+4040 - Active Spark jobs
+
+
+
+
+-------------------- Transformations and Actions --------------------
+There are two types of functions in Spark
+1. Transformations
+2. Actions
+
+Spark uses lazy evalutaions to evaluate RDD and datatframe. This means the code is not executed until it is needed. The actions trigger the lasily evaluated functions. 
+e.g.
+df - spark.read.load('some csv file')
+df1 = df.select('some column').filter('somexs condition')
+df1.write('to path')
+
+• In the code above, 'select' and 'filter' are tranformation functions and 'write' is an action function
+• If you execute this code line by line, the second line will be loaded, but we will not see the function being executed in the Spark UI
+• When we actually execute using the action 'write' then we will see our Spark program being executed:
+	• select --> filter --> write chained in Spark UI
+	• but we will only see write show up under our tasks
+This is significant becasue we can chain our RDD or dataframes as much as we want, but it mught not do anything until we acutally trigger with some action words. And if we have lengthy transformations, then it might take the executors quite some time to complete tasks.
+
+For further reading on Spark UI use:
+https://spark.apache.org/docs/latest/monitoring.html
+
+
+
+
+-------------------- Data Skewness --------------------
+
+
+
+
+
+
+
+
+
 
 
 
