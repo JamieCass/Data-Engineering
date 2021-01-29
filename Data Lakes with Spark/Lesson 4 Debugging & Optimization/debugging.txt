@@ -48,7 +48,7 @@ There are two types of functions in Spark
 Spark uses lazy evalutaions to evaluate RDD and datatframe. This means the code is not executed until it is needed. The actions trigger the lasily evaluated functions. 
 e.g.
 df - spark.read.load('some csv file')
-df1 = df.select('some column').filter('somexs condition')
+df1 = df.select('some column').filter('some condition')
 df1.write('to path')
 
 • In the code above, 'select' and 'filter' are tranformation functions and 'write' is an action function
