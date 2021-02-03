@@ -75,7 +75,7 @@ In the jupyter notebook test-skewness you can see most of the data is in 2014-20
 ----- How do we solve skewed data problems? -----
 The goal is to change the partitioning to take out the data skewness (e.g. the year column is skewed)... 
 
-1. Use alternative columnas that are more normally distributed: 
+1. Use alternative columns that are more normally distributed: 
 	Instead of the 'year' column we could use the 'Issue_Date' column that isnt skewed
 
 2. Make composite keys:
@@ -87,8 +87,34 @@ The goal is to change the partitioning to take out the data skewness (e.g. the y
 
 
 
+-------------------- Troubleshooting other Spark issues --------------------
+----- Insufficient resources -----
+Sometimes there are possible ways of improvement, processing large datasets just takes a longer time than smaller ones even without any big problem in the code or job tuning. Using more resources, either by increasing the number of exectuors or using more power machines, might not be possible. When you have a slow job its useful to understand: 
+
+How much data youre actualy processing (compressed file formats can be tricky to inturpret). If you can decrease the amount of data being processed by filtering or aggregating to lower cardinality, and if resource untilization is reasonable.
+
+There are many cases where different stages of a Spark job differ greatly in their resource needs: loading data is typically I/O heavi, some stages might require a lot of memory, others might need a lot of CPY. Undertsanding these differences might help optomize the overall performance. Use the Spark UI and logs to collect information on these metrics.
+
+If you run into out of memory errors you might consider increasing the number or partitions. If the memory errors occur over time you can look into why the size of cartain objects is increasing too much suring the rin and if the size can be contained. Also look for ways of freeing up resources if garbage collection metrics are high.
+
+Certain algorithms (especially ML) use the driver to store data the workers share and update during the run. If you see memory issues on the driver check if the algorithm youre using is pushing too much data there.
 
 
+----- Data Skew -----
+If you drill down in the Spark UI to the task level you can see if certain partitions process signicantly more data than others and if they are lagging behind. Such symptoms usually indicate a skewed data set. Consider implementing the teqhniques mentioned in this lesson:
+
+Add an intermediate data processing step with an alternative key Adjust the spark.sql.shuffle.patritions parameter if necessary.
+
+The problem with data skew is that its very specific to a dataset. You might know ahead of time that certain customers or accounts are expected to generate a lot more activity but the solution for dealing with skew might be strongly dependent on how the data looks. If you need to implement a more general solution (for example for an automated pipeline) its recommended to take a more concervative approach (so assume that your data will be skewed) and monitor how bad the skew really is.
+
+----- Inefficient queries -----
+Once your Spark application works its worth spending some times to analyze the query it runs. You can use the Spark UI to check the DAG and the jobs and stages its built of.
+
+Sparks query optimizer is called Catalyst. While Catalyst is a powerful tool to turn python code to an optimized query plac that can run on the JVM, it has some limitations when optimizing your code. It will for example push filters in a particular stage as early as possible in the plan but wont move a filter across stages. Its your job to make sure that if early filtering is possible without compromising the business logic then you perform this where its more appropriate.
+
+It also cant decide for you hjow much date youre shuffling across a cluster. Remember from the first lesson how expensive sedning data through the network is. As much as possible try to avoid shuffling unnecessary data. In practice, this means that you need to perform joins and grouped aggregations as late as possible.
+
+When it comes to joins there is more than one strategy to choose from. If one of your dataframes is small consider using broadcast hash join instead of a hash join
 
 
 
