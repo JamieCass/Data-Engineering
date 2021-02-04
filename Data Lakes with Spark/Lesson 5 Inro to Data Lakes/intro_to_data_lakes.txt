@@ -1,0 +1,80 @@
+-------------------- Why Data Lakes --------------------
+----- Why do we need data lakes? -----
+In recent years, many factors drove the evolution of the data warehouse, to name a few:
+• The abundance of unstructured data (text, xml, json, logs, sensor data, images, voice, etc..)
+
+• Uprecendented data volumes (social, IoT, machine-generated, etc..)
+
+• The rise of Big Data technologies like HDFS, Spark, etc..
+
+• New types of data analysis gaining momemtum, e.g predicitive analytics, recommender systems, graph analytics, etc..
+
+• Emergence of new roles like the data scientist
+
+
+----- Abundance of Unstructured data -----
+Can we still have unstructured data in the data warehouse?
+• Might be possible in the ETL process. For instance, we might be able to distill some elements from json data and put it in a tabular format.
+
+• But later, we might decide that we want to transform it differently, so deciding on a particular form of transformation is a strong commitment without enough knowledge. E.g. we start by recording # of replies in a facebook commentss and then we are interested in the frequency of angry words.
+
+• Some data is hard to put in a tabular format like deep json structures.
+
+• Some data like text/pdf documents could be stored as 'blobs' or data in a relational database but totally useless unless processed to extract metrics.
+
+
+----- The Rise of Big Data technologies -----
+• The Hadoop file system (HDFS) made it possible to store Petabytes of data on commodity hardware. Much lower cost per TB compared to MPP (massive parralel processing) databasses.
+
+• Associated processing tools starting from MapReduce, Pig, Hive, Impala and Spark, to name a few, made it possible to process this data at scale on the same hardware used for storage.
+
+• It is possible to make data analysis without inserting into a predefined schema. One can load a CSV file and make a query without creating a table, inserting the data in the table. Similarly one can process unstructures text. This approach is known as 'Schema-On-Read'.
+
+
+----- New Roles & Advanced Analytics -----
+• The data warehouse by design follows a very well-architected path to make a clean, consistent and performant model that busniss users can easily use to gain insights and make decisions.
+
+• As data became an asset of highest value (Data is the new oil), a role like the data scientist started to emerge seeking value from data.
+
+• The data scientist job is almost impossible conforming to a single rigid representation of data. There needs freedom to represent data, join data sets together, retrieve new external data sources and more.
+
+• The type of analytics such as machine learning, natural language processing need to access the raw data in forms totally different from a star schema.
+
+
+----- The Data Lake is the new Data Warehouse -----
+• The data lake shares the goals of the data warehouse of supporting business insights beyond the day-to-day transactional handlinh.
+
+• The data lake is a new form of a data warehouse that evolved to cope with:
+	• The variety of data formats and structuring
+	• The agile and ad-hoc nature of data exploration activites needed by new roles like the data scientist
+	• The wide spectrum data transformation needed by advaced analytics like machine learning, graph analytics and recommender systems
+
+
+
+
+-------------------- Big Data Effects --------------------
+----- Low costs, ETL offloading (see picture) ----- 
+• Once big data technologies started to gain industrial grounds, ETL offloading for data warehouse was a clear choice
+
+• The same hardware for storage and processing. No need for a speacial ETL grid or additional storage for staging area 
+
+• Dimensional modelling with conformed dimensions or data marts for high/known-value data
+
+• Moreover, lower cost per TB gave room for storing low/inknown-value data previously not available for analytics
+
+
+----- Schema-on-Read -----
+• Traditionally, data in a database has been much easier to process than data in plain files
+
+• Big data tools in the hadoop ecosystem, e.g Hive & Spark made it easy to work with a file as easy as it is to work with a database wwithout:
+	• Creating a database
+	• Inserting the data into a database
+
+• Schema-on-read: as for the schema of a table (simple a file on disk)
+	• It is either inferred
+	• Or specified and the data is not inserted into it, but upon reas the data is checked against the specified schema
+
+
+
+
+
