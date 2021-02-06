@@ -112,7 +112,7 @@ Once your Spark application works its worth spending some times to analyze the q
 
 Sparks query optimizer is called Catalyst. While Catalyst is a powerful tool to turn python code to an optimized query plac that can run on the JVM, it has some limitations when optimizing your code. It will for example push filters in a particular stage as early as possible in the plan but wont move a filter across stages. Its your job to make sure that if early filtering is possible without compromising the business logic then you perform this where its more appropriate.
 
-It also cant decide for you hjow much date youre shuffling across a cluster. Remember from the first lesson how expensive sedning data through the network is. As much as possible try to avoid shuffling unnecessary data. In practice, this means that you need to perform joins and grouped aggregations as late as possible.
+It also cant decide for you how much date youre shuffling across a cluster. Remember from the first lesson how expensive sedning data through the network is. As much as possible try to avoid shuffling unnecessary data. In practice, this means that you need to perform joins and grouped aggregations as late as possible.
 
 When it comes to joins there is more than one strategy to choose from. If one of your dataframes is small consider using broadcast hash join instead of a hash join
 

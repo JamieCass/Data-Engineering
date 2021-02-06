@@ -72,7 +72,31 @@ Can we still have unstructured data in the data warehouse?
 
 • Schema-on-read: as for the schema of a table (simple a file on disk)
 	• It is either inferred
-	• Or specified and the data is not inserted into it, but upon reas the data is checked against the specified schema
+	• Or specified and the data is not inserted into it, but upon read the data is checked against the specified schema
+
+
+----- (Un-/Semi)Structured support -----
+• Spark has the ability to read-write files in:
+	• Text-based many formats, csv, json, text
+	• Binary formats such as Avro (saves space) and Parquet (columnar)
+	• Compressed formats e.g. gzip & snappy
+- dfLog = spark.read.text('data/NASA_access_log_Jul95.gz')
+- dfRaw = spark.read.csv('data/news_worldnews.csv')
+
+• Read/write from a variety of file systems
+	• Local file system
+	• HDFS
+	• S3
+- df = spark.read.csv('s3a://udacity-labs/sports/sport_league.csv')
+
+• Read/write from a variety of databases 
+	• SQL through JDBC
+	• NoSql: MongoDb, Cassandra, Neo4j, ...
+- pgDF = spark.read.format ('jdbc')\
+	.option('driver', 'org.postgresql.Driver')\
+	.option('url', 'jdbc:postgresql://localhost')\
+	.option('dbtable', 'public.pagila')\
+	.option('user', 'postgresd').option('password', 'postgres').load()
 
 
 
