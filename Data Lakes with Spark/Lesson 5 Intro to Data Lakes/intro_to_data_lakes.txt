@@ -75,6 +75,7 @@ Can we still have unstructured data in the data warehouse?
 	• Or specified and the data is not inserted into it, but upon read the data is checked against the specified schema
 
 
+ 
 ----- (Un-/Semi)Structured support -----
 • Spark has the ability to read-write files in:
 	• Text-based many formats, csv, json, text
