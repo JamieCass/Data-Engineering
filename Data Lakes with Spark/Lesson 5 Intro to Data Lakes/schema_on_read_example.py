@@ -86,7 +86,7 @@ dfClean.limit(5).toPandas() # This will show a DF will all the columns with the 
 # -------------------------------- Popular hosts --------------------------------
 # This will show a count for all hosts
 from pyspark.sql.functions import desc 
-dfClean.grouopBy('host').count().orderBy(desc('count')).limit(10).toPandas()
+dfClean.groupBy('host').count().orderBy(desc('count')).limit(10).toPandas()
 
 
 # -------------------------------- Popular hosts --------------------------------
