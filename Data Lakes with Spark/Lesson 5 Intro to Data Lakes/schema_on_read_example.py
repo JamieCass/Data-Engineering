@@ -89,7 +89,7 @@ from pyspark.sql.functions import desc
 dfClean.groupBy('host').count().orderBy(desc('count')).limit(10).toPandas()
 
 
-# -------------------------------- Popular hosts --------------------------------
+# -------------------------------- Popular content --------------------------------
 # This will show the most popular content and how many times it was viewed.
 dfClean.groupBy('endpoint').count().orderBy(desc('count')).limit(10).toPandas()
 
@@ -125,8 +125,9 @@ order by content_size desc
 # 2- Create a new column with a date time string that spark would understand 
 # 3- Add a new date-time column properly types
 # 4- Print your schema
-
-
+from pyspark.sql import functions as F
+df_date = dfCleanTyped.withColumn("date", F.unix_timestamp('date_time', 'dd/MMM/yyyy:HH:mm:ss Z').cast('timestamp'))
+df_date.limit(10).toPandas()
 
 
 
