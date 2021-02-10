@@ -26,7 +26,7 @@ dfAuthorTitle.limit(5).toPandas()
 # -------------------------------- Try to implement the equivalent of flatMap in dataframes --------------------------------
 # We want to know what sort of things the reddit post is talking about
 import pyspark.sql.functions as F 
-dfWordCount = df.select(F.explode(F.split(title, '\\s+')).alias('word').count().orderBy(F.desc('count')))
+dfWordCount = df.select(F.explode(F.split(title, '\\s+')).alias('word')).groupBy('word').count().orderBy(F.desc('count'))
 dfWordCount.limit(10).toPandas()
 
 
@@ -50,7 +50,7 @@ dfNNP.limit(10).toPandas()
 
 
 # -------------------------------- Extract columns for a map in a col --------------------------------
-dfWordTag = dfNNP('pos.metadata["word"] as word', 'pos.result as tag') 
+dfWordTag = dfNNP.selectExpr('pos.metadata["word"] as word', 'pos.result as tag') 
 dfWordTag.limit(10).toPandas()
 
 # Group by what words show up the most 
