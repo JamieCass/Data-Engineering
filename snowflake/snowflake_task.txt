@@ -1,0 +1,37 @@
+SNOWFLAKE TASK 
+
+- TAXONOMY_ID is the unique ID for the variable
+- TAXONOMY_CODE is the desc relating to the ID
+- USER_ID is the unique ID for the person
+- We may receive multiple rows per provider per person per variable
+- GEO_DEVICE_HASH maps to where a person was when we gathered the data point
+- RECORD_DATE was the date the data was collected about the person
+- LOAD_TIMESTAMP was the time the data was loaded into the s3
+- DATA_PROVIDER is the company we receive the data from
+
+TASK 1:
+We need to understand how we are receiving data from these providers, do we receive multiple rows per person, on what frequency do we receive the data, are there multiple geographies per person (Is it locational data).
+Basically i want you to produce a report which has a number of "Findings" that look at the columns in the data and inform us how to interpret it and ultimately, how to transform it to a useable format.
+
+
+TASK 2:
+Design a new structure for use on customer level. What would be the structure of the data you would create. Can you write a query to transform the data into this format
+
+
+------------------ TASK 1 --------------------
+• 2 distinct data providers - 33366, 27117
+• 60 DISTINCT load_timestamps - 30 for each provider
+• 34 DISTINCT record_dates -  32(33366), 31(27117) - 1 unaccounted for..
+• 1 geo_device_hash for everything & everyone (must be gathering the information from a set place...)
+• 3 taxonomy_codes - spaots_fan, hot_drinks_company, successful_career
+• 11103 distinct user_ids
+
+• sports_fan - 6760 user_id count - DISTINCT count = 4651
+• hot_drinks_company - 14905 user_id count - DISTINCT count = 10030
+• successful_career - 894 user_id count - DISTINCT count = 627
+
+• start date 2021-01-04 11:29:20.551
+• end date   2021-02-14 08:32:28.951
+• data loaded even on sundays
+
+
