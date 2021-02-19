@@ -70,14 +70,15 @@ SELECT *, TO_DATE(load_timestamp)
 FROM "TEST_DATA"."PUBLIC"."TEST_TABLE";
 
 
--- user table to show each transaction and what day
+-- create user table to show each transaction and what day
+CREATE TABLE hot_drinks AS (
 SELECT user_id, 
        COUNT(*) as number_of_transactions_drinks, 
        COUNT(DISTINCT TO_DATE(load_timestamp)) AS number_of_days_drinks, 
        COUNT(DISTINCT GEO_DEVICE_HASH) AS number_of_geo_drink
 FROM "TEST_DATA"."PUBLIC"."TEST_TABLE"
 WHERE taxonomy_code = 'HOT_DRINKS_COMPANY'
-GROUP BY 1
+GROUP BY 1)
 ;
 
 
