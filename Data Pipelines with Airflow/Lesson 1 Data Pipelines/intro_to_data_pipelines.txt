@@ -43,7 +43,6 @@ Why is it important?
 Directed Acyclic Graphs (DAGs)
 • Data pipelines are well expressed as DAGs 
 • The conceptual framework of data pipelines will help you better organize and execute everyday data engineering tasks.
-
 In ETL, each step of the process typically depends on the last.
 Each step is a node and the dependencies on prior steps are directed edges. 
 

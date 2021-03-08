@@ -1,5 +1,8 @@
 -------------------- Apache Airflow --------------------
+https://airflow.apache.org/ for more info 
 
+Airflow is a platform to prgramatically author, schedu;e and mpnitor workflows. It allows users to write DAGs in python that run on a schedule and/or from an external trigger. Its simple to maintain and can run data analysis itself, or trigger external tools (Redshift, Spark, Presto, Hadoop, etc) during execution.
+Airflow also provides a web-based UI for users to visualize and interact with their data pipelines. When workflows are defined as code, they become more maintainable, versionable, testable and collborative.
 
 
 
