@@ -65,3 +65,34 @@ Operators define the atomic steps or work that make up a DAG. Airflow comes with
 
 
 
+
+-------------------- Airflow Hooks --------------------
+Connections can be accessed in code via hooks
+• Hooks provide a reusable interface to extrenal systems and databases.
+• You dont have to worry about how and where you sotre these connection strings and secrets in your code, the code just needs to know the name of the connection.
+
+Airflows comes with many hooks that can integrate with common systems.
+• HttpHook
+• PostgresHook (works with RedShift)
+• MySqlHook
+• SlackHook
+• PrestoHook
+• etc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
