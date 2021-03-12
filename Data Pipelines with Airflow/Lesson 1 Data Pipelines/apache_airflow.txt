@@ -82,6 +82,11 @@ Airflows comes with many hooks that can integrate with common systems.
 
 
 
+-------------------- Runtime Variables --------------------
+Airflow leverages templating to allow users to 'fill in the blank' with important runtime variables for tasks. 
+Heres a link to the default variables
+https://airflow.apache.org/docs/apache-airflow/stable/macros-ref.html
+
 
 
 
