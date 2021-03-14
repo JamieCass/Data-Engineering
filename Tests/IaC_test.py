@@ -4,7 +4,6 @@ import configparser
 import psycopg2
 import pandas as pd
 import sql
-
 config = configparser.ConfigParser()
 config.read_file(open('/Users/jamie/Coding/keys/dwh.cfg'))
 

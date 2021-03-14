@@ -2,8 +2,9 @@ import datetime
 import logging
 
 from airflow import DAG
-from airflow.operators.python_operator import PythonOperator 
-
+from airflow.operators.python_operator import PythonOperator
+import setproctitle
+import airflow
 
 # TODO: Define a function for the PythonOperator to call
 
@@ -56,7 +57,7 @@ goodbye_world_task=PythonOperator(task_id='goodbye_world', ...)
 hello_world_task >> goodbye_world_task
 
 # OR
-a.set_downstream(b) # means a comes before b 
+a.set_downstream(b) # means a comes before b
 a.set_upstream(b) # means a comes after b
 hello_world_task.set_downstream(goodbye_world_task)
 
@@ -184,7 +185,7 @@ list_task = PythonOperator(
 
 
 
-##################### Runtime Variables ##################### 
+##################### Runtime Variables #####################
 # Instructions
 # Use the Airflow context in the pythonoperator to complete the TODOs below. Once you are done, run your DAG and check the logs to see the context in use.
 
@@ -281,11 +282,3 @@ location_traffic_task = PostgresOperator(
 
 create_table >> copy_task
 copy_task >> location_traffic_task
-
-
-
-
-
-
-
-
