@@ -45,4 +45,4 @@ In general, data lineage has important implications for a business. Each departm
 3. What's the frequency on related datasets?
 	A good rule of thumb is that the frequency of a pipeline’s schedule should be determined by the dataset in our pipeline which requires the most frequent analysis. This isn’t universally the case, but it's a good starting assumption. For example, if our trips data is updating every hour, but our bikeshare station table only updates once a quarter, we’ll probably want to run our trip analysis every hour, and not once a quarter.
 
-
+seeing if this worls this time 
