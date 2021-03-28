@@ -3,8 +3,7 @@ import logging
 
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
-import setproctitle
-import airflow
+
 
 # TODO: Define a function for the PythonOperator to call
 
@@ -42,7 +41,6 @@ task = PythonOperator(
 	task_id='hello_world',
 	python_callable=hello_world,
 	dag=divvy_dag)
-
 
 
 ##################### Task Dependencies #####################
@@ -282,3 +280,11 @@ location_traffic_task = PostgresOperator(
 
 create_table >> copy_task
 copy_task >> location_traffic_task
+
+
+
+####################################################################
+# LESSON 2 
+####################################################################
+
+

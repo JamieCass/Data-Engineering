@@ -36,6 +36,30 @@ Order of operations for an Airflow DAG
 
 
 
+-------------------- Connections --------------------
+To connect to amazon web services you need to create connections and variables in the Admin section.
+
+
+- To connect to AWS go to Connections in admin:
+
+	Conn id 	- aws_credentials
+	Conn type 	- Amazon Web Services
+	Login 		- access key
+	Password 	- access secret
+
+
+- To connect to REDSHIFT go to Connections in admin:
+
+	Conn id 	- redshift
+	Conn type 	- Postgres
+	Host 		- endpoint of cluster 
+	Schema 		- name of database
+	Login 		- user with access for db
+	Password 	- password for user with access for db
+	Port 		- 5439
+
+
+
 -------------------- Schedules --------------------
 Schedules are optional, and may be defined with cron strings or Airlfow Presets. Airflow provides the following presets:
 • @once - Run a DAG once and then never agiain
