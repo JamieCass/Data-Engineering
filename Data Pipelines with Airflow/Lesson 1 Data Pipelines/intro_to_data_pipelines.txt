@@ -7,12 +7,12 @@
 
 Definition: A series of steps which data is processed. Typically using either ETL or ELT
 
-Example: Pretend we works at a bikeshare company and want to email customers who dont complete a purchase.. 
+Example: Pretend we work at a bikeshare company and want to email customers who dont complete a purchase.. 
 
-A data pipeline to accomplish this task would likely:
-1. Load application event data from a source such as S3 of Kafka.
+A data pipeline to accomplish this task would likely be:
+1. Load application event data from a source such as S3 or Kafka.
 2. Load the data into an analytic warehouse such as RedShift.
-3. Perform data trabnsformations that identify high-traffic bike docks so the business can determine where to buils additional locations.
+3. Perform data transformations that identify high-traffic bike docks so the business can determine where to build additional locations.
 
 
 
@@ -22,14 +22,14 @@ Ensuring the quality of your data through automated validations checks is a crit
 
 
 What could go wrong?? 
-In the previous example we loaded event data, analyzed it and tanked our busiest locations to determine where to build additional capacity. 
+In the previous example we loaded event data, analyzed it and ranked our busiest locations to determine where to build additional capacity. 
 
 We could have added to following validation steps:
 After loading from S3 to RedShift:
 • Validate the number of rows in RedShift match the number or records in S3.
 
 Once locations business analysis is complete: 
-• Validate that all locations havr a daily visit average greater than 0
+• Validate that all locations have a daily visit average greater than 0
 • Validate that the number of locations in our output table match the number of tables in the input table
 
 
@@ -53,7 +53,7 @@ E --------> T --------> L
 
 Definitions:
 • DAGs: DAGs are a special subset of graphs in which the edges between nodes have a special direction, and no cycles exist. When we say 'no cycles exist' what we mean is the nodes cant create a path back to themselves. 
-• Nodes: A step in the data pipeline process .
+• Nodes: A step in the data pipeline process.
 • Edges: The dependencies or relationships between other nodes. 
 
 

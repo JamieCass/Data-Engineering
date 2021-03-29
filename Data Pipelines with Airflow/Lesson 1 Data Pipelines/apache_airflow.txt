@@ -1,7 +1,7 @@
 -------------------- Apache Airflow --------------------
 https://airflow.apache.org/ for more info 
 
-Airflow is a platform to prgramatically author, schedu;e and mpnitor workflows. It allows users to write DAGs in python that run on a schedule and/or from an external trigger. Its simple to maintain and can run data analysis itself, or trigger external tools (Redshift, Spark, Presto, Hadoop, etc) during execution.
+Airflow is a platform to prgramatically author, schedule and monitor workflows. It allows users to write DAGs in python that run on a schedule and/or from an external trigger. Its simple to maintain and can run data analysis itself, or trigger external tools (Redshift, Spark, Presto, Hadoop, etc) during execution.
 Airflow also provides a web-based UI for users to visualize and interact with their data pipelines. When workflows are defined as code, they become more maintainable, versionable, testable and collborative.
 
 ----- TIPS for using Airflows Web Server -----
@@ -19,17 +19,17 @@ Airflow consists of 5 runtime components:
 
 	• Work Queue: is used by scheduler in most Airflow installations to deliver tasks that need to be run to the workers.
 
-	• Worker Processes: execute the perations definied in each DAG. In most Airflow installations, workers pull from the work queue when it is ready to process a tassk. When the worker completes the execution of the task, it will attempt to process more work from the work queue until there is no further work remaining. When work in the queue arrives, the worker will begin to process it.
+	• Worker Processes: execute the operations definied in each DAG. In most Airflow installations, workers pull from the work queue when it is ready to process a task. When the worker completes the execution of the task, it will attempt to process more work from the work queue until there is no further work remaining. When work in the queue arrives, the worker will begin to process it.
 
 	• Database: saves credentials, connections, history and configuration. The database, often referred to as the metadata database, also stores the state of all tasks in the system. Airflow components interact with the database with the python ORM, SQLAlchemy.
 
-	• Web interface: provides a control dashboard for users and maintainers. Throughout this course you will see how the web interface allows users to perform tasks such as stopping and starting DAGs, retrying failes tasks, configuring credentials. The wed interface is built using Flask web-development microframework.
+	• Web interface: provides a control dashboard for users and maintainers. Throughout this course you will see how the web interface allows users to perform tasks such as stopping and starting DAGs, retrying failes tasks, configuring credentials. The web interface is built using Flask web-development microframework.
 
 Order of operations for an Airflow DAG
 • The airflow scheduler starts DAGs based on time or external triggers.
-• Once a DAG is started, the scheduler looks at the steps withing the DAG and determines which steps can run by looking at the dependencies.
+• Once a DAG is started, the scheduler looks at the steps within the DAG and determines which steps can run by looking at the dependencies.
 • The scheduler places runnable steps in the queue.
-• Workers pick up thos tasks and run them.
+• Workers pick up those tasks and run them.
 • Once the worker has finished running the step, the final status of the task is recorded and additional taks are places by the scheduler until all tasks are complete. 
 • Once all tasks have been completed, the DAG is complete. 
 
@@ -44,8 +44,8 @@ To connect to amazon web services you need to create connections and variables i
 
 	Conn id 	- aws_credentials
 	Conn type 	- Amazon Web Services
-	Login 		- access key
-	Password 	- access secret
+	Login 		- AWS access key
+	Password 	- AWS access secret
 
 
 - To connect to REDSHIFT go to Connections in admin:
@@ -72,7 +72,7 @@ Schedules are optional, and may be defined with cron strings or Airlfow Presets.
 
 Start Date: If the start date is in the past, Airflow will run the DAG as many times as there are schedule intervals between that starts date and the current date.
 
-End Date: Unless you specify an optional end dat, Airflow will continue to run your DAGs until you disable or delete the DAG.
+End Date: Unless you specify an optional end date, Airflow will continue to run your DAGs until you disable or delete the DAG.
 
 
 
@@ -95,7 +95,7 @@ Connections can be accessed in code via hooks
 • Hooks provide a reusable interface to extrenal systems and databases.
 • You dont have to worry about how and where you sotre these connection strings and secrets in your code, the code just needs to know the name of the connection.
 
-Airflows comes with many hooks that can integrate with common systems.
+Airflow comes with many hooks that can integrate with common systems.
 • HttpHook
 • PostgresHook (works with RedShift)
 • MySqlHook

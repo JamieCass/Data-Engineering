@@ -4,6 +4,8 @@ import logging
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 
+# To start airflow on course 
+/opt/airflow/start.sh 
 
 # TODO: Define a function for the PythonOperator to call
 
