@@ -59,8 +59,25 @@ Airflow pipelines can also have end dates. You can use and end_date with your pi
 
 
 
+-------------------- Data Partitioning --------------------
+- Schedule Partitioning
+Not only are schedules great for reducing the amount of data our pipelines have to process, but they also help up guarantee that we can meet the timing guarantees that our data consumers may need. 
 
 
+- Logical Partitioning
+Conceptually related data can be partitioned into discrete segments and processed seperately. This process of seperating data based on its conceptual relationship is called logical partitioning. With logical partitioning, unrealated things belong to seperate steps. Consider your dependencies and seperate processing around these boundaries.
+
+Also worth mentioning, the data location is another form of logical partitioning. For example, if our data is stored in a key-value store like Amazon S3 in a format such as 's3://<bucket>/<year>/<month>/<day>' we could say that our date is logically partitioned by time.
+
+
+- Size Partitioning
+Size partitioning seperates data fro processing based on desired or required storage limits. This essentially sets the amount of data included in a data pipeline run. Size partitioning is critical to understand when working with large dataets, especially with Airflow! 
+
+
+- Why Data Partitioning? 
+Pipelines designed to work with partitioned data fail more gracefully. Smaller datasets, smaller time periods and related concepts are easier to debug than big datasets, large time periods and unrelated concepts. Patitioning makes debugging and rerunning failed tasks much simpler. It also enables easier redos of work, reducing cost and time. 
+
+Another great thing about Airflow is that if your data is partitioned appropriately, your tassks will naturally have fewer dependencies on each other. Because of this, Airflow will be able to parrellelize execution of your DAGs to produce your results even faster. 
 
 
 
