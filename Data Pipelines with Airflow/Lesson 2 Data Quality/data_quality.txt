@@ -82,6 +82,30 @@ Another great thing about Airflow is that if your data is partitioned appropriat
 
 
 
+-------------------- Data Quality -------------------- 
+Data quality is the measure of how well a dataset satisfies its intended use. 
+Adherence to a set of requirements is a good starting point for measuring data quality.
+Requirements should be defined by you and your data consumers before you start creating your data pipeline. 
+ 
+Examples of Data Quality Requirements:
+• Data must be a certain size
+• Data must be accurate to some margin of error
+• Data must arrive within a given timeframe from the start of execution
+• Pipelines must run on a particular schedule
+• Data must not contain any sensitive information
+
+You would use a Service Level Agreement (SLA) to tell Airflow when a DAG must be completed by.
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -151,3 +151,5 @@ conn.commit()
 # Delete the cluster
 ##########################################
 redshift.delete_cluster(ClusterIdentifier=DWH_CLUSTER_IDENTIFIER,  SkipFinalClusterSnapshot=True)
+
+dir(redshift)
