@@ -12,3 +12,19 @@ To create custom opertator, follow the steps:
 1. Identify Operators that perfom simialr functions and can be consolidated.
 2. Define a new Operator in the plugins folder
 3. Replace the original Operators with your new custom one, re-parameterize, and instantiate them. 
+
+
+
+
+-------------------- Extending Airflow Hooks & Contrib --------------------
+Airflow Contrib
+Airflow has a rich and vibrant open source community. This community is contantly adding new functionality and extending the capablities of Ariflow. As as Airflow user, you should always check Airflow Contrib before building your own airflow plugins, to see if what you need already exists.
+
+Operators and hooks for common data tools like Apache Spark and Cassandra, as well as vendor specific integrations for Amazon Web Services, Azure and Google Cloud Platform can be found in Airlfow contrib. If the functionality exists and its not quite what you want, thats a greats opportunity to add that functionality through an open source contribution. 
+Check it out:
+https://github.com/apache/airflow/tree/master/airflow/contrib
+
+
+
+
+
