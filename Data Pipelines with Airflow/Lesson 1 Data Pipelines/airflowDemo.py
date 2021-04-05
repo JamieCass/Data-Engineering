@@ -712,16 +712,16 @@ import sql_statements
 #
 # TODO: Replace the data quality checks with the HasRowsOperator
 #
-def check_greater_than_zero(*args, **kwargs):
-    table = kwargs["params"]["table"]
-    redshift_hook = PostgresHook("redshift")
-    records = redshift_hook.get_records(f"SELECT COUNT(*) FROM {table}")
-    if len(records) < 1 or len(records[0]) < 1:
-        raise ValueError(f"Data quality check failed. {table} returned no results")
-    num_records = records[0][0]
-    if num_records < 1:
-        raise ValueError(f"Data quality check failed. {table} contained 0 rows")
-    logging.info(f"Data quality on table {table} check passed with {records[0][0]} records")
+# def check_greater_than_zero(*args, **kwargs):
+#     table = kwargs["params"]["table"]
+#     redshift_hook = PostgresHook("redshift")
+#     records = redshift_hook.get_records(f"SELECT COUNT(*) FROM {table}")
+#     if len(records) < 1 or len(records[0]) < 1:
+#         raise ValueError(f"Data quality check failed. {table} returned no results")
+#     num_records = records[0][0]
+#     if num_records < 1:
+#         raise ValueError(f"Data quality check failed. {table} contained 0 rows")
+#     logging.info(f"Data quality on table {table} check passed with {records[0][0]} records")
 
 
 dag = DAG(
@@ -752,14 +752,11 @@ copy_trips_task = S3ToRedshiftOperator(
 #
 # TODO: Replace this data quality check with the HasRowsOperator
 #
-check_trips = PythonOperator(
+check_trips = HasRowsOperator(
     task_id='check_trips_data',
     dag=dag,
-    python_callable=check_greater_than_zero,
     provide_context=True,
-    params={
-        'table': 'trips',
-    }
+    table='trips',
 )
 
 create_stations_table = PostgresOperator(
@@ -782,14 +779,11 @@ copy_stations_task = S3ToRedshiftOperator(
 #
 # TODO: Replace this data quality check with the HasRowsOperator
 #
-check_stations = PythonOperator(
+check_stations = HasRowsOperator(
     task_id='check_stations_data',
     dag=dag,
-    python_callable=check_greater_than_zero,
     provide_context=True,
-    params={
-        'table': 'stations',
-    }
+    table='stations'
 )
 
 create_trips_table >> copy_trips_task
