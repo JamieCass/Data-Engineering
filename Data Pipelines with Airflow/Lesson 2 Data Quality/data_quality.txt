@@ -99,6 +99,18 @@ You would use a Service Level Agreement (SLA) to tell Airflow when a DAG must be
 
 
 
+-------------------- Task Boundaries --------------------
+DAG tasks should be designed such that they are:
+• Atomic and have a single purpose
+• Maximize parallelism
+• Make failure stats obvious
+
+Every tak in your DAG should perform only one job 
+"Write progrrams that do one thing and do it well"
+
+Benefits of task boundaries
+• Re-visitable: Task boundaries are used for you if you revisit a pipeline you wrote after a 6 month absence. Youll have a mush easier time understanding how it works and the lineage of the data if the boundaries between tasks are clear and well defined. This is tru in the code itself, and within the Airflow UI.
+• Tasks that do just one thing are often more easily parralelized. This parallelization can offer a significant speedup in the execution of our DAGs. 
 
 
 
