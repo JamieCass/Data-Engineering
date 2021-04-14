@@ -115,6 +115,19 @@ Benefits of task boundaries
 
 
 
+-------------------- SubDAGs --------------------
+Commonly repeated seris of tasks within DAGs can be captured as reusable SubDAGs. Benefits inclue:
+• Decrease the amount of code we need to write and maintain to create a new DAG
+• Easier to understand the high level goals of a DAG
+• Bug fixes, speedups, and other enhancements can be made more quickly and distributed to all DAGs that us that SubDAG
+
+Drawbacks of using SubDAGs 
+• Limit the visibility within the Airflow UI
+• Abstraction makes understanding what the DAG is doing more difficult
+• Encourages premature optimization
+
+
+
 
 
 
