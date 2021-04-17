@@ -347,19 +347,22 @@ stations_subdag_task = SubDagOperator(
 # TODO: Consolidate check_trips and check_stations into a single check in the subdag
 #       as we did with the create and copy in the demo
 #
-check_trips = HasRowsOperator(
-    task_id="check_trips_data",
-    dag=dag,
-    redshift_conn_id="redshift",
-    table="trips"
-)
+# check_trips = HasRowsOperator(
+#     task_id="check_trips_data",
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     table="trips"
+# )
 
-check_stations = HasRowsOperator(
-    task_id="check_stations_data",
-    dag=dag,
-    redshift_conn_id="redshift",
-    table="stations"
-)
+# check_stations = HasRowsOperator(
+#     task_id="check_stations_data",
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     table="stations"
+# )
+
+
+
 
 location_traffic_task = PostgresOperator(
     task_id="calculate_location_traffic",
@@ -432,8 +435,15 @@ def get_s3_to_redshift_dag(
     #
     # TODO: Move the HasRowsOperator task here from the DAG
     #
-
+    check_task = HasRowsOperator(
+        task_id=f"check_{table}_has_rows",
+        dag=dag,
+        redshift_conn_id=redshift_conn_id,
+        table=table
+        )
+    
     create_task >> copy_task
+    copy_task >> check_task
     #
     # TODO: Use DAG ordering to place the check task
     #
