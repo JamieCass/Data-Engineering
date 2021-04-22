@@ -28,7 +28,7 @@ The projects template package contains 3 major components for the project:
 	• A helper call for the SQL transformations
 
 ----- Configuring the DAG -----
-The the DAG, add default parameters according to these guidlines 
+The the DAG, add default parameters according to these guidelines 
 • The DAG does not have dependencies on past runs
 • On failure, the task are retried 3 times
 • Retrries happen every 5 minutes
