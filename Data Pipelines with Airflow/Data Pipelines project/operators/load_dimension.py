@@ -30,3 +30,4 @@ class LoadDimensionOperator(BaseOperator):
 
     def execute(self, context):
         self.log.info('LoadDimensionOperator not implemented yet')
+        

@@ -29,3 +29,5 @@ class DataQualityOperator(BaseOperator):
             records = redshift_hook.get_records(f'SELECT COUNT (*) FROM {table}')
             if len(records) < 1 or len(records[0]) < 1:
                 raise ValueError('Error while performing the data quality check')
+            else:
+                self.log.info('Successfully completed quality checks')

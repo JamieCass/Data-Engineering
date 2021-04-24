@@ -16,6 +16,7 @@ class StageToRedshiftOperator(BaseOperator):
                  table='',
                  s3_bucket='',
                  s3_key='',
+                 json_path='',
                  delimiter=',',
                  ignore_headers=1,
                  *args, **kwargs):

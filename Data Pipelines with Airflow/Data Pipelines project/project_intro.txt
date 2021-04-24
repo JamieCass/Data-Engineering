@@ -37,7 +37,7 @@ The the DAG, add default parameters according to these guidelines
 
 
 ---------------- Building the operators ---------------- 
-To complete the project, you need to buikd four different operators that will stage the data, transform the data and run checks on data quality.
+To complete the project, you need to build four different operators that will stage the data, transform the data and run checks on data quality.
 
 You can reuse the code from project 2, but rememeber to utilise Airflows built-in functionalities as connections and hooks as much as possible and let Airflow do all the heavy-lifting when it is possible. 
 
