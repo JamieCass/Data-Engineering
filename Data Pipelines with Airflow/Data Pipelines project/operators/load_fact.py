@@ -27,5 +27,7 @@ class LoadFactOperator(BaseOperator):
         self.sql_to_load_tbl = sql_to_load_tbl
 
     def execute(self, context):
-        self.log.info('LoadFactOperator not implemented yet')
-        redshift_hook = PostgresHook('redshift')
+        self.log.info('LoadFactOperator Running')
+        redshift = PostgresHook('redshift')
+        sql_statement = "INSERT INTO {} {} {}".format(self.table, self.table_columns,self.sql_to_load_tbl)
+        redshift.run(sql_statement)
