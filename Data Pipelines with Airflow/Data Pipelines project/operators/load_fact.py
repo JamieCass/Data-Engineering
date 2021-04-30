@@ -13,8 +13,8 @@ class LoadFactOperator(BaseOperator):
                  # conn_id = your-connection-name
                  redshift_conn_id='',
                  table='',
-                 table_columns='',
-                 sql_to_load_tbl=''
+                 sql_statement='',
+                 append_data='',
                  *args, **kwargs):
 
         super(LoadFactOperator, self).__init__(*args, **kwargs)
@@ -23,11 +23,18 @@ class LoadFactOperator(BaseOperator):
         # self.conn_id = conn_id
         self.redshift_conn_id = redshift_conn_id
         self.table = table
-        self.table_columns = table_columns
-        self.sql_to_load_tbl = sql_to_load_tbl
+        self.sql_statement = sql_statement
+        self.append_data = append_data 
 
     def execute(self, context):
         self.log.info('LoadFactOperator Running')
-        redshift = PostgresHook('redshift')
-        sql_statement = "INSERT INTO {} {} {}".format(self.table, self.table_columns,self.sql_to_load_tbl)
-        redshift.run(sql_statement)
+        redshift_hook = PostgresHook('redshift')
+        self.log.info('Appending data')
+        if self.append_data == True:
+            sql_statement = f'INSERT INTO {self.table} {self.sql_statement}'
+            redshift_hook.run(sql_statement)
+        else:
+            sql_statement = f'DELETE FROM {self.table}'
+            redhsift_hook.run(sql_statement)
+        sql_statement = f'INSERT INTO {self.table} {self.sql_statement}'
+            redshift_hook.run(sql_statement)
