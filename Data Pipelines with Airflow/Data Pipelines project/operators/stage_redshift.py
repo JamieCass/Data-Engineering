@@ -16,7 +16,6 @@ class StageToRedshiftOperator(BaseOperator):
                  table='',
                  s3_bucket='',
                  s3_key='',
-                 json_path='',
                  delimiter=',',
                  ignore_headers=1,
                  *args, **kwargs):
@@ -26,6 +25,7 @@ class StageToRedshiftOperator(BaseOperator):
         # Example:
         self.table = table
         self.redshift_conn_id = redshift_conn_id
+        self.aws_credentials_id = aws_credentials_id
         self.s3_bucket = s3_bucket
         self.s3_key = s3_key
         self.delimiter = delimiter
@@ -34,7 +34,26 @@ class StageToRedshiftOperator(BaseOperator):
 
 
     def execute(self, context):
-        self.log.info('StageToRedshiftOperator not implemented yet')
+        # self.log.info('StageToRedshiftOperator not implemented yet')
+        aws_hook = AwsHook(self.aws_credentials_id)
+        credentials = aws_hook.get_credentials()
+        redshift = PostgresHook(postgres_conn_id=self.redshift_conn_id)
+
+        self.log.info('Clearing data from destinations Redshift table')
+        redshift.run(f'DELETE FROM {self.table}')
+
+        self.log.info('Copying data from S3 to Redshift')
+        rendered_key = self.s3_key.format(**context)
+        s3_path = f's3://{self.s3_bucket}/{rendered_key}'
+        formatted_sql = StageToRedshiftOperator.copy_sql.format(
+            self.table,
+            s3_path,
+            credentials.access_key,
+            credentials.secret_key,
+            self.ignore_headers,
+            self.delimiter
+        )
+        redshift.run(formatted_sql)
 
 
 
