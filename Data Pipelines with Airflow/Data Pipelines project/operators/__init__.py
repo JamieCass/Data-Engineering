@@ -9,3 +9,5 @@ __all__ = [
     'LoadDimensionOperator',
     'DataQualityOperator'
 ]
+
+print('init file ran')
