@@ -29,5 +29,13 @@ class LoadDimensionOperator(BaseOperator):
         self.groupby_column = groupby_column
 
     def execute(self, context):
-        self.log.info('LoadDimensionOperator not implemented yet')
-        
+        self.log.info('LoadDimensionOperator Running')
+        redshift = PostgresHook(postgres_conn_id=self.redshift_conn_id)        
+        self.log.info('Appending data')
+        if self.append_data == True:
+            sql_statement = f'INSERT INTO {self.table} {self.sql_statement}'
+            redshift.run(sql_statement)
+        else:
+            sql_statement = f'DELETE FROM {self.table}'
+            redhsift.run(sql_statement)
+
