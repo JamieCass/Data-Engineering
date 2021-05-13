@@ -41,10 +41,10 @@ GROUP BY 1
 -- person with 7 entries
 SELECT user_id
 FROM (
-SELECT user_id, COUNT(*) AS count_rows
-FROM "TEST_DATA"."PUBLIC"."TEST_TABLE"
-WHERE taxonomy_code = 'HOT_DRINKS_COMPANY'
-GROUP BY 1) AS t1
+	SELECT user_id, COUNT(*) AS count_rows
+	FROM "TEST_DATA"."PUBLIC"."TEST_TABLE"
+	WHERE taxonomy_code = 'HOT_DRINKS_COMPANY'
+	GROUP BY 1) AS t1
 WHERE count_rows = 7
 ;
 
@@ -86,7 +86,15 @@ GROUP BY 1)
 
 -- --------------------- SPORTS ---------------------
 
-
+CREATE TABLE sports AS (
+SELECT user_id, 
+       COUNT(*) as number_of_transactions_sports, 
+       COUNT(DISTINCT TO_DATE(load_timestamp)) AS number_of_days_sports, 
+       COUNT(DISTINCT GEO_DEVICE_HASH) AS number_of_geo_sports
+FROM "TEST_DATA"."PUBLIC"."TEST_TABLE"
+WHERE taxonomy_code = 'SPORTS_FAN'
+GROUP BY 1)
+;
 
 
 
