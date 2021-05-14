@@ -19,7 +19,7 @@ class DataQualityOperator(BaseOperator):
         # Map params here
         # Example:
         # self.conn_id = conn_id
-        self.redshift_conn_id = redshift_hook
+        self.redshift_conn_id = redshift_conn_id
         self.table_names = table_names
 
     def execute(self, context):
