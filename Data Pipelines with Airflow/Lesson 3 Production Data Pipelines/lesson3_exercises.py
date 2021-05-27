@@ -285,7 +285,7 @@ create_under_18_task >> log_youngest
 
 ##################### Exercise 3 #####################
 
-##### DAG 
+##### DAG
 #Instructions
 #In this exercise, we’ll place our S3 to RedShift Copy operations into a SubDag.
 #1 - Consolidate HasRowsOperator into the SubDag
@@ -378,7 +378,7 @@ trips_subdag_task >> location_traffic_task
 stations_subdag_task >> location_traffic_task
 
 
-##### SUBDAG 
+##### SUBDAG
 #Instructions
 #In this exercise, we’ll place our S3 to RedShift Copy operations into a SubDag.
 #1 - Consolidate HasRowsOperator into the SubDag
@@ -482,7 +482,7 @@ dag = DAG("lesson3.exercise4", start_date=datetime.datetime.utcnow())
 copy_trips_task = S3ToRedshiftOperator(
     task_id='load_trips_from_s3_to_redshift',
     dag=dag,
-    table-'trips',
+    table='trips',
     redshift_conn_id='redshift',
     aws_credentials='aws_credentials',
     s3_bucket='udacity-dend',
@@ -517,7 +517,7 @@ calculate_facts = FactsCalculatorOperator(
 # TODO: Define task ordering for the DAG tasks you defined
 #
 copy_trips_task >> check_trips
-check_trips >> calculate_facts 
+check_trips >> calculate_facts
 
 
 
@@ -578,10 +578,3 @@ class FactsCalculatorOperator(BaseOperator):
         #
 
         pass
-
-
-
-
-
-
-
