@@ -30,8 +30,8 @@ The projects template package contains 3 major components for the project:
 ----- Configuring the DAG -----
 The the DAG, add default parameters according to these guidelines 
 • The DAG does not have dependencies on past runs
-• On failure, the task are retried 3 times
-• Retrries happen every 5 minutes
+• On failure, the tasks are retried 3 times
+• Retries happen every 5 minutes
 • Catchup is turned off 
 • Do not email on retry
 
